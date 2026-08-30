@@ -204,13 +204,13 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             <Link href="/portfolio" className="group cursor-pointer block">
               <div className="relative aspect-[3/4] bg-stone-300 mb-8 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
-                {/* <Image src="/portfolio-1.jpg" alt="Wedding" fill className="object-cover" /> */}
+                <Image src="/wedding-robin.jpeg" alt="Wedding" fill className="object-cover" />
               </div>
               <h3 className="text-3xl mb-3 font-light text-stone-800">Elopements & Proposals</h3>
             </Link>
             <Link href="/portfolio" className="group cursor-pointer block md:mt-32">
               <div className="relative aspect-[3/4] bg-stone-300 mb-8 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
-                {/* <Image src="/portfolio-2.jpg" alt="Commercial" fill className="object-cover" /> */}
+                <Image src="/erewhon.jpeg" alt="Commercial" fill className="object-cover" />
               </div>
               <h3 className="text-3xl mb-3 font-light text-stone-800">Commercial Films & Photo</h3>
             </Link>
