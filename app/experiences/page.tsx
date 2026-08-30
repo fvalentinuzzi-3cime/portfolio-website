@@ -31,7 +31,7 @@ export default function Experience() {
         </div>
         
         <div className="w-[120px] text-right">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1">Experience</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1">Experiences</span>
         </div>
       </nav>
 

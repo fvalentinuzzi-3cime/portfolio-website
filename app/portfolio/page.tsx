@@ -105,11 +105,26 @@ export default function Portfolio() {
           {/* Row 1 */}
           <div className="flex flex-col md:flex-row gap-12 mb-24 md:mb-32 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-refined.jpg" 
+                   alt="Refined wedding photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2">Refined</p>
             </motion.div>
+            
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-detail.jpg" 
+                   alt="Detail-driven wedding photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">Detail-Driven</p>
             </motion.div>
           </div>
@@ -117,11 +132,26 @@ export default function Portfolio() {
           {/* Row 2 */}
           <div className="flex flex-col md:flex-row-reverse gap-12 mb-24 md:mb-32 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-timeless.jpg" 
+                   alt="Timeless wedding photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2">Timeless</p>
             </motion.div>
+            
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-authentic.jpg" 
+                   alt="Authentic connection photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">Authentic</p>
             </motion.div>
           </div>
@@ -129,11 +159,26 @@ export default function Portfolio() {
           {/* Row 3 */}
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-cinematic.jpg" 
+                   alt="Cinematic storytelling photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2">Cinematic</p>
             </motion.div>
+            
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative mb-4"></div>
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <Image 
+                   src="/portfolio-intentional.jpeg" 
+                   alt="Intentional detail photography" 
+                   fill 
+                   className="object-cover" 
+                 />
+              </div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">Intentional</p>
             </motion.div>
           </div>
