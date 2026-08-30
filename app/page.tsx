@@ -108,7 +108,7 @@ export default function Home() {
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
             <li><Link href="/portfolio" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Portfolio</Link></li>
             <li><Link href="/services" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Services</Link></li>
-            <li><Link href="/experience" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Experience</Link></li>
+            <li><Link href="/experiences" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Experience</Link></li>
           </ul>
         </div>
         
@@ -314,7 +314,7 @@ export default function Home() {
             <Link href="/about" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">About</Link>
             <Link href="/portfolio" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Portfolio</Link>
             <Link href="/services" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Services</Link>
-            <Link href="/experience" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Experiences</Link>
+            <Link href="/experiences" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Experiences</Link>
             <Link href="#journal" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Journal</Link>
           </div>
 
