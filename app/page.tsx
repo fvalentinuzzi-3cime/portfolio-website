@@ -62,10 +62,11 @@ export default function Home() {
 
             <div className="flex-1 flex flex-col px-8 pb-10">
               <ul className="flex flex-col gap-5 mt-4 mb-12">
-                {["Portfolio", "Services","Experiences", "Journal", "About"].map((item) => (
+                {/* Journal removed from the list below */}
+                {["Portfolio", "Services","Experiences", "About"].map((item) => (
                   <li key={item}>
                     <Link
-                      href={item === "Portfolio" ? "/portfolio" : `#${item.toLowerCase()}`}
+                      href={item === "Portfolio" ? "/portfolio" : `/${item.toLowerCase()}`}
                       onClick={() => setIsMenuOpen(false)}
                       className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors"
                     >
@@ -76,7 +77,7 @@ export default function Home() {
               </ul>
 
               <div className="w-full aspect-[3/2] bg-stone-300 relative overflow-hidden mb-8">
-                 <Image src="/menu-image.jpg" alt="Dolomites Elopement" fill className="object-cover" />
+                 <Image src="/redhair-girl.jpeg" alt="Redhair girl black and white" fill className="object-cover" />
               </div>
               
               <div className="flex justify-end mb-12">
@@ -108,7 +109,7 @@ export default function Home() {
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
             <li><Link href="/portfolio" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Portfolio</Link></li>
             <li><Link href="/services" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Services</Link></li>
-            <li><Link href="/experiences" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Experience</Link></li>
+            <li><Link href="/experiences" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Experiences</Link></li>
           </ul>
         </div>
         
@@ -126,8 +127,8 @@ export default function Home() {
         </div>
         
         <div className="justify-self-end flex items-center gap-6">
+          {/* Journal removed from the right-side nav below */}
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
-            <li><Link href="#journal" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Journal</Link></li>
             <li><Link href="/about" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>About</Link></li>
           </ul>
 
@@ -223,7 +224,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 text-left">
             <div>
               <div className="w-full h-64 md:h-80 bg-stone-300 mb-8 relative overflow-hidden">
-                 {/* <Image src="/service-photo.jpg" alt="Photography Services" fill className="object-cover" /> */}
+                 <Image src="/richard.jpeg" alt="Detailed picture of guy focus wearing headset" fill className="object-cover" />
               </div>
               <h3 className="text-2xl mb-4 font-light text-stone-800">Photography</h3>
               <p className="text-sm text-stone-600 font-light leading-relaxed">
@@ -232,7 +233,7 @@ export default function Home() {
             </div>
             <div>
               <div className="w-full h-64 md:h-80 bg-stone-300 mb-8 relative overflow-hidden">
-                {/* <Image src="/service-film.jpg" alt="Filmmaking Services" fill className="object-cover" /> */}
+                <Image src="/filmmaking-2-Large.jpeg" alt="Filmmaking Services" fill className="object-cover" />
               </div>
               <h3 className="text-2xl mb-4 font-light text-stone-800">Filmmaking</h3>
               <p className="text-sm text-stone-600 font-light leading-relaxed">
@@ -242,50 +243,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- JOURNAL --- */}
-        <section id="journal" className="max-w-7xl mx-auto px-6 mb-32 md:mb-48 border-t border-stone-300 pt-32">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 text-center md:text-left gap-4">
-            <div>
-              <h2 className="text-4xl mb-2 font-light text-stone-800">Local Guides</h2>
-              <p className="text-sm text-stone-600 font-light">Insights and planning tips for destination shoots across Italy.</p>
-            </div>
-            <Link href="#journal" className="text-xs font-bold uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors border-b-2 border-transparent hover:border-stone-800 pb-1 hidden md:block">
-              View All Posts
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-            <div className="group cursor-pointer">
-              <div className="w-full aspect-[4/3] bg-stone-300 mb-6 overflow-hidden relative"></div>
-              <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 mb-3">Planning</p>
-              <h3 className="text-xl mb-3 font-light text-stone-800 group-hover:text-stone-500 transition-colors">How to Elope in the Friulian Dolomites</h3>
-              <p className="text-sm text-stone-600 font-light line-clamp-2">A complete guide to planning your intimate mountain wedding away from the tourist crowds.</p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="w-full aspect-[4/3] bg-stone-300 mb-6 overflow-hidden relative"></div>
-              <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 mb-3">Locations</p>
-              <h3 className="text-xl mb-3 font-light text-stone-800 group-hover:text-stone-500 transition-colors">Historic Villas vs. Alpine Peaks</h3>
-              <p className="text-sm text-stone-600 font-light line-clamp-2">Choosing the perfect backdrop for your destination wedding or brand retreat in Northern Italy.</p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="w-full aspect-[4/3] bg-stone-300 mb-6 overflow-hidden relative"></div>
-              <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 mb-3">Commercial</p>
-              <h3 className="text-xl mb-3 font-light text-stone-800 group-hover:text-stone-500 transition-colors">Producing a High-End Brand Campaign at Altitude</h3>
-              <p className="text-sm text-stone-600 font-light line-clamp-2">Behind the scenes on logistics, lighting, and scouting for outdoor apparel shoots in unpredictable weather.</p>
-            </div>
-          </div>
-          
-          <div className="mt-12 text-center md:hidden">
-            <Link href="#journal" className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1">
-              View All Posts
-            </Link>
-          </div>
-        </section>
-
         {/* --- CONTACT --- */}
-        <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6">
+        <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
             <p className="text-stone-600 mb-16 font-light text-sm">
@@ -315,7 +274,7 @@ export default function Home() {
             <Link href="/portfolio" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Portfolio</Link>
             <Link href="/services" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Services</Link>
             <Link href="/experiences" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Experiences</Link>
-            <Link href="#journal" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Journal</Link>
+            {/* Journal removed from footer */}
           </div>
 
           <div className="flex flex-col gap-4">

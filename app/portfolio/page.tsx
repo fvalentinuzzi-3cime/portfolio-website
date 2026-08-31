@@ -43,7 +43,7 @@ export default function Portfolio() {
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
           className="w-full h-[70vh] md:h-[85vh] relative mb-24 md:mb-32 px-4 md:px-12"
         >
-          <div className="w-full h-full relative bg-stone-300 overflow-hidden">
+          <div className="w-full h-full relative bg-stone-300 overflow-hidden shadow-sm">
              <Image src="/portfolio-header.jpeg" alt="Cinematic documentary photography" fill className="object-cover" priority />
           </div>
         </motion.section>
@@ -74,14 +74,13 @@ export default function Portfolio() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
-                  {/* Placeholder for a main wedding shot */}
-                  {/* <Image src="/wed-1.jpg" alt="Elopement" fill className="object-cover" /> */}
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
+                  <Image src="/ilo-1a.jpg" alt="Elopement" fill className="object-cover" />
                 </div>
               </motion.div>
               
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
-                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
                   <Image src="/portfolio-intentional.jpeg" alt="Intentional wedding detail" fill className="object-cover" />
                 </div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">Intentional Details</p>
@@ -111,13 +110,13 @@ export default function Portfolio() {
             
             <div className="flex flex-col md:flex-row gap-12 mt-24">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-                <div className="w-full aspect-[4/3] bg-stone-300 relative overflow-hidden">
-                  {/* <Image src="/landscape-2.jpg" alt="Landscape detail" fill className="object-cover" /> */}
+                <div className="w-full aspect-[4/3] bg-stone-300 relative overflow-hidden shadow-sm">
+                  <Image src="/california-landscape.jpeg" alt="Landscape detail california coast" fill className="object-cover" />
                 </div>
               </motion.div>
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-                <div className="w-full aspect-[4/3] bg-stone-300 relative overflow-hidden">
-                  {/* <Image src="/landscape-3.jpg" alt="Landscape detail" fill className="object-cover" /> */}
+                <div className="w-full aspect-[4/3] bg-stone-300 relative overflow-hidden shadow-sm">
+                  <Image src="/dolomites.jpeg" alt="Italian dolomites at sunrise" fill className="object-cover" />
                 </div>
               </motion.div>
             </div>
@@ -137,13 +136,13 @@ export default function Portfolio() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
-                  {/* <Image src="/action-1.jpg" alt="Commercial Action" fill className="object-cover" /> */}
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
+                  <Image src="/Ephemeral 3-4.jpg" alt="Commercial Action" fill className="object-cover" />
                 </div>
               </motion.div>
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
-                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4">
-                  {/* <Image src="/action-2.jpg" alt="Commercial Detail" fill className="object-cover" /> */}
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
+                  <Image src="/Jeff Mercier BTS.jpg" alt="Behind the scenes of interview on iceland glacier with ice climber Jeff Mercier" fill className="object-cover" />
                 </div>
               </motion.div>
             </div>
@@ -153,7 +152,7 @@ export default function Portfolio() {
       </main>
 
       {/* Simple Footer for Portfolio Page */}
-      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] tracking-widest uppercase text-center">
+      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] font-bold tracking-widest uppercase text-center">
         © 2026 Francesco Valentinuzzi
       </footer>
 

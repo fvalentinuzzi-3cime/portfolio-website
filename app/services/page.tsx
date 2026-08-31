@@ -55,7 +55,7 @@ export default function Services() {
           <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
               <div className="w-full aspect-[4/5] bg-stone-300 relative">
-                 {/* <Image src="/service-elopement.jpg" alt="Elopement in Italy" fill className="object-cover" /> */}
+                 <Image src="/wedding-robin.jpeg" alt="Elopement in Italy" fill className="object-cover" />
               </div>
             </motion.div>
             
@@ -81,7 +81,7 @@ export default function Services() {
           <div className="flex flex-col md:flex-row-reverse gap-12 md:gap-24 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
               <div className="w-full aspect-[4/5] bg-stone-300 relative">
-                 {/* <Image src="/service-wedding.jpg" alt="Italy Destination Wedding Photographer" fill className="object-cover" /> */}
+                 <Image src="/wedding.jpeg" alt="Italy Destination Wedding Photographer" fill className="object-cover" />
               </div>
             </motion.div>
             
@@ -124,7 +124,7 @@ export default function Services() {
           <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
               <div className="w-full aspect-[4/5] bg-stone-300 relative">
-                 {/* <Image src="/service-commercial.jpg" alt="Commercial Photography" fill className="object-cover" /> */}
+                 <Image src="/norrona-Large.jpeg" alt="Athlete wearing puff from Norrona" fill className="object-cover" />
               </div>
             </motion.div>
             

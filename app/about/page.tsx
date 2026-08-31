@@ -19,19 +19,19 @@ export default function About() {
       {/* Minimal Navbar */}
       <nav className="flex justify-between items-center py-10 px-8 md:px-12 lg:px-24 sticky top-0 z-50 bg-[#E9E8E6]/90 backdrop-blur-sm">
         <div className="w-[120px]">
-          <Link href="/" className="text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
+          <Link href="/" className="text-xs font-bold uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
             ← Back Home
           </Link>
         </div>
         
-        <div className="text-center w-[120px] h-[120px] mx-auto flex items-center justify-center">
-          <Link href="/">
-            <Image src="/portfolio_logo.png" alt="Artist Logo" width={120} height={120} className="object-contain" />
+        <div className="text-center w-28 h-28 md:w-[160px] md:h-[160px] mx-auto flex items-center justify-center relative">
+          <Link href="/" className="w-full h-full relative block hover:scale-105 transition-transform duration-500">
+            <Image src="/portfolio_logo.png" alt="Artist Logo" fill className="object-contain" priority />
           </Link>
         </div>
         
         <div className="w-[120px] text-right">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1">About</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1">About</span>
         </div>
       </nav>
 
@@ -56,8 +56,8 @@ export default function About() {
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
           className="max-w-5xl mx-auto px-4 md:px-12 mb-24 md:mb-32"
         >
-          <div className="w-full aspect-[16/9] relative bg-stone-300 overflow-hidden">
-             {/* <Image src="/about-francesco.jpg" alt="Francesco Valentinuzzi" fill className="object-cover" /> */}
+          <div className="w-full aspect-[16/9] relative bg-stone-300 overflow-hidden shadow-sm">
+             <Image src="/Francesco.jpeg" alt="Francesco Valentinuzzi" fill className="object-cover" priority />
           </div>
         </motion.section>
 
@@ -69,78 +69,140 @@ export default function About() {
               Memories matter. More than the grand venues or the perfect lighting, it is the raw, unscripted emotion that endures. After years of living and creating across New York City, Los Angeles, and Denver, I found my way back to the breathtaking landscapes of Northern Italy. 
             </p>
             <p className="text-sm text-stone-600 font-light leading-relaxed">
-              My background is in documentary filmmaking, a discipline where authenticity is everything. My work has been celebrated globally, including winning Best Documentary in Los Angeles (2026) and earning a finalist selection as a producer at the 2025 Banff Mountain Film Festival. Today, I bring that exact same cinematic, truth-driven eye to destination weddings, intimate elopements, and high-end commercial campaigns.
+              My background is in documentary filmmaking, a discipline where authenticity is everything. My work has been celebrated globally, including winning Best Documentary in Los Angeles and earning a finalist selection as a producer at the Banff Mountain Film Festival. Today, I bring that exact same cinematic, truth-driven eye to destination weddings, intimate elopements, and high-end commercial campaigns.
             </p>
             <p className="text-sm text-stone-600 font-light leading-relaxed">
-              I know that stepping in front of a camera can feel intimidating. That is why my couples often describe me as a "photographer, guide, and friend." I am here to navigate the alpine trails, find the hidden Tuscan villas, speak the local language, and ensure you feel completely at ease so your true story can unfold naturally.
+              As a photographer, I specialize in capturing unique moments, tailoring every shot based on my clients' specific vision. I know that stepping in front of a camera can feel intimidating. That is why my couples often describe me as a "photographer, guide, and friend." 
+            </p>
+            <p className="text-sm text-stone-600 font-light leading-relaxed">
+              Currently based in Aviano, Northern Italy, I am here to navigate the alpine trails, find the hidden Tuscan villas, speak the local language, and ensure you feel completely at ease whether we are shooting in every corner of Italy or across North America.
             </p>
           </motion.div>
         </section>
 
-        {/* Behind the Lens (6 Random Facts) */}
-        <section className="max-w-6xl mx-auto px-6 mb-32 md:mb-48">
+        {/* =========================================
+            FILM PRODUCER SECTION 
+        ========================================= */}
+        <section className="max-w-7xl mx-auto px-6 mb-32 md:mb-48 border-t border-stone-300 pt-32">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl font-light text-stone-800 mb-4">Behind the Lens</h2>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500">A few random facts about me</p>
+            <h2 className="text-3xl font-light text-stone-800 mb-4">Selected Films</h2>
+            <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-500">Documentary Work as a Producer</p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
             
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">01</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                Before calling the Italian mountains my home base, I lived in the fast-paced creative hubs of New York City, Los Angeles, and Denver. That international experience allows me to seamlessly connect with clients traveling from all over the world.
+            {/* Film 1: Ephemeral */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="group">
+              <div className="w-full aspect-[2/3] bg-stone-300 relative overflow-hidden mb-6 shadow-sm">
+                <Image src="/ephemeral-website.jpeg" alt="Ephemeral Poster" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <h3 className="text-xl mb-2 font-medium text-stone-800">Ephemeral</h3>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-4 font-bold">with Jeff Mercier</p>
+              <p className="text-sm text-stone-600 font-light mb-4 line-clamp-3">
+                A documentary following ice climbing legend Jeff Mercier in the incredible Icelandic landscapes, redefining what is possible in ice climbing.
               </p>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">02</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                I am a massive nerd for visual storytelling. Winning Best Documentary in LA and being a Banff finalist was not just a career milestone: it cemented my belief that every great project must be rooted in truth.
-              </p>
+              <div className="text-[9px] uppercase tracking-widest text-stone-400 space-y-1">
+                <p>• Finalist, Banff Mountain Film Festival 2025</p>
+                <p>• Trento Film Festival</p>
+                <p>• Mendi Film Festival</p>
+                <p>• Flickr Rhode Island</p>
+                <p>• Mountainfilm</p>
+              </div>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">03</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                I am also a trained graphic designer. This background gives me a highly refined, editorial eye for composition, color, and typography, which translates perfectly into crafting your custom fine art albums.
+            {/* Film 2: Tipa Tipa */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="group md:mt-12">
+              <div className="w-full aspect-[2/3] bg-stone-300 relative overflow-hidden mb-6 shadow-sm">
+                <Image src="/tipa-tipa-website.jpeg" alt="Tipa Tipa Poster" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <h3 className="text-xl mb-2 font-medium text-stone-800">Tipa Tipa</h3>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-4 font-bold">with Sylvaine Cussot</p>
+              <p className="text-sm text-stone-600 font-light mb-4 line-clamp-3">
+                An emotional trail running documentary in the beautiful Reunion Island, following the grueling journey of the Grand Raid.
               </p>
+              <div className="text-[9px] uppercase tracking-widest text-stone-400 space-y-1">
+                <p>• Official Selection, MHFF</p>
+                <p>• Trail Running Film Festival</p>
+              </div>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">04</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                I regularly collaborate with major international outdoor brands such as Asics, Rab, Hydrapak, La Sportiva, and NutriPure. Producing high-end commercial campaigns in the mountains requires a level of precision that I bring to every single wedding I shoot.
+            {/* Film 3: Dumped */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="group md:mt-24">
+              <div className="w-full aspect-[2/3] bg-stone-300 relative overflow-hidden mb-6 shadow-sm">
+                <Image src="/dumped-website.jpeg" alt="Dumped Poster" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <h3 className="text-xl mb-2 font-medium text-stone-800">DUMPED</h3>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-4 font-bold">with Paws Patrol LV</p>
+              <p className="text-sm text-stone-600 font-light mb-4 line-clamp-3">
+                A real-life documentary exposing the daily realities and emotional toll of the life of animal rescuers in Las Vegas.
               </p>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">05</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                When I am not behind the camera, you can usually find me playing with my dog, hiking in the Dolomites, and trying to sip a perfect cup of coffee.
-              </p>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="bg-stone-200/50 p-8">
-              <span className="block text-3xl font-light text-stone-300 mb-4">06</span>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                I love early mornings. I also have a deep passion for vintage cameras, short films, and, of course, a great pizza.
-              </p>
+              <div className="text-[9px] uppercase tracking-widest text-stone-400 space-y-1">
+                <p>• Award Winner, Rock The Shorts Los Angeles</p>
+              </div>
             </motion.div>
 
+          </div>
+        </section>
+
+        {/* =========================================
+            COMMERCIAL CLIENTS SECTION 
+        ========================================= */}
+        <section className="bg-stone-200/50 py-32 mb-32 md:mb-48 border-y border-stone-300">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
+              <h2 className="text-2xl font-light text-stone-800 mb-12">Trusted By</h2>
+              
+              <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 text-sm uppercase tracking-[0.3em] font-medium text-stone-400">
+                <span>EREWHON Los Angeles</span>
+                <span className="hidden md:inline text-stone-300">/</span>
+                <span>Rab</span>
+                <span className="hidden md:inline text-stone-300">/</span>
+                <span>ASICS</span>
+                <span className="hidden md:inline text-stone-300">/</span>
+                <span>HDRY</span>
+                <span className="hidden md:inline text-stone-300">/</span>
+                <span>Nutripure</span>
+              </div>
+              
+              <p className="text-xs text-stone-500 font-light mt-12 max-w-2xl mx-auto leading-relaxed">
+                Producing high-end commercial photo and video campaigns requires a level of precision, vision, and adaptability that I bring to every private event and wedding I shoot.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* =========================================
+            TOP 3 PICTURES
+        ========================================= */}
+        <section className="max-w-7xl mx-auto px-6 mb-32 md:mb-48">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
+            <h2 className="text-3xl font-light text-stone-800 mb-4">Signature Frames</h2>
+            <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-500">A curation of my favorite moments</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
+              <Image src="/signature2 Large.jpeg" alt="New York City at sunset" fill className="object-cover" />
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-12">
+              <Image src="/signature2.jpeg" alt="Signature Frame 2" fill className="object-cover" />
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-24">
+              <Image src="/signature3.jpeg" alt="Signature Frame 3" fill className="object-cover" />
+            </motion.div>
           </div>
         </section>
 
         {/* Call to Action */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-          className="max-w-2xl mx-auto px-6 text-center"
+          className="max-w-2xl mx-auto px-6 text-center border-t border-stone-300 pt-32"
         >
           <h2 className="text-3xl font-light text-stone-800 mb-6">Let's create something beautiful.</h2>
           <p className="text-sm text-stone-600 font-light mb-10">
             I can't wait to connect with you and tell your incredible story. 
           </p>
-          <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500">
+          <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500 font-bold">
             Send Me A Message
           </Link>
         </motion.section>
@@ -148,7 +210,7 @@ export default function About() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] tracking-widest uppercase text-center">
+      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] tracking-widest font-bold uppercase text-center">
         © 2026 Francesco Valentinuzzi
       </footer>
 

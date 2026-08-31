@@ -19,19 +19,19 @@ export default function Experience() {
       {/* Minimal Navbar */}
       <nav className="flex justify-between items-center py-10 px-8 md:px-12 lg:px-24 sticky top-0 z-50 bg-[#E9E8E6]/90 backdrop-blur-sm">
         <div className="w-[120px]">
-          <Link href="/" className="text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
+          <Link href="/" className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
             ← Back Home
           </Link>
         </div>
         
-        <div className="text-center w-[120px] h-[120px] mx-auto flex items-center justify-center">
-          <Link href="/">
-            <Image src="/portfolio_logo.png" alt="Artist Logo" width={120} height={120} className="object-contain" />
+        <div className="text-center w-28 h-28 md:w-[160px] md:h-[160px] mx-auto flex items-center justify-center relative">
+          <Link href="/" className="w-full h-full relative block hover:scale-105 transition-transform duration-500">
+            <Image src="/portfolio_logo.png" alt="Artist Logo" fill className="object-contain" priority />
           </Link>
         </div>
         
         <div className="w-[120px] text-right">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1">Experiences</span>
+          <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1">Experiences</span>
         </div>
       </nav>
 
@@ -40,9 +40,9 @@ export default function Experience() {
         {/* Intro Section */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-          className="max-w-4xl mx-auto px-6 text-center mt-12 mb-24"
+          className="max-w-4xl mx-auto px-6 text-center mt-12 mb-32"
         >
-          <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-6">What to Expect</p>
+          <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-500 mb-6">What to Expect</p>
           <h1 className="text-4xl md:text-5xl font-light text-stone-800 leading-tight mb-8">
             Effortless, Cinematic, and True.
           </h1>
@@ -51,48 +51,38 @@ export default function Experience() {
           </p>
         </motion.section>
 
-        {/* 1. Connection & Planning */}
-        <section className="max-w-7xl mx-auto px-6 mb-24 md:mb-32">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative">
-                 {/* <Image src="/experience-planning.jpg" alt="Planning a destination wedding" fill className="object-cover" /> */}
-              </div>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 flex flex-col justify-center">
-              <h2 className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-4">Before The Shoot</h2>
-              <h3 className="text-3xl font-light text-stone-800 mb-6">Connection is Everything</h3>
-              <p className="text-sm text-stone-600 font-light leading-relaxed mb-6">
-                These heartfelt images and films you see in my portfolio are born from genuine relationships. From the very first email, I stay as close as possible to the bride and groom. Communication is the foundation of my work.
-              </p>
-              <p className="text-sm text-stone-600 font-light leading-relaxed">
-                We will dive deep into your vision, plan the timeline, and scout the perfect unique locations for your moments. By the time your wedding day arrives, you will feel like you are being photographed by a trusted friend, not a stranger.
-              </p>
-            </motion.div>
-          </div>
+        {/* 1. Connection & Planning (Text Only, Centered) */}
+        <section className="max-w-3xl mx-auto px-6 mb-32">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center">
+            <h2 className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 mb-4">Before The Shoot</h2>
+            <h3 className="text-3xl font-light text-stone-800 mb-8">Connection is Everything</h3>
+            <p className="text-base text-stone-600 font-light leading-relaxed mb-6">
+              These heartfelt images and films you see in my portfolio are born from genuine relationships. From the very first email, I stay as close as possible to the bride and groom. Communication is the foundation of my work.
+            </p>
+            <p className="text-base text-stone-600 font-light leading-relaxed">
+              We will dive deep into your vision, plan the timeline, and scout the perfect unique locations for your moments. By the time your wedding day arrives, you will feel like you are being photographed by a trusted friend, not a stranger.
+            </p>
+          </motion.div>
         </section>
 
-        {/* 2. During the Shoot */}
-        <section className="max-w-7xl mx-auto px-6 mb-32 md:mb-48">
-          <div className="flex flex-col md:flex-row-reverse gap-12 md:gap-24 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
-              <div className="w-full aspect-[4/5] bg-stone-300 relative">
-                 {/* <Image src="/experience-shooting.jpg" alt="Cinematic wedding photography in action" fill className="object-cover" /> */}
-              </div>
-            </motion.div>
-            
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 flex flex-col justify-center">
-              <h2 className="text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-4">During The Shoot</h2>
-              <h3 className="text-3xl font-light text-stone-800 mb-6">Unscripted & Authentic</h3>
-              <p className="text-sm text-stone-600 font-light leading-relaxed mb-6">
-                Almost all of my couples have never been professionally photographed before we meet. Static poses and forced smiles have absolutely no place in my work. Be prepared to move, laugh, and embrace the environment. 
-              </p>
-              <p className="text-sm text-stone-600 font-light leading-relaxed mb-6">
-                My approach is a spontaneous, photojournalistic reportage. While I will gently direct you to catch the best cinematic light, I will never ask you to freeze in place. For my filmmaking couples, this is also when we create pure magic. We will venture to specific, breathtaking locations to capture the raw audio and video of your private wedding vows, preserving the true heartbeat of your day forever.
-              </p>
-            </motion.div>
-          </div>
+        {/* Divider */}
+        <div className="w-px h-16 bg-stone-300 mx-auto mb-32"></div>
+
+        {/* 2. During the Shoot (Text Only, Centered) */}
+        <section className="max-w-3xl mx-auto px-6 mb-40">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center">
+            <h2 className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 mb-4">During The Shoot</h2>
+            <h3 className="text-3xl font-light text-stone-800 mb-8">Unscripted & Authentic</h3>
+            <p className="text-base text-stone-600 font-light leading-relaxed mb-6">
+              Almost all of my couples have never been professionally photographed before we meet. Static poses and forced smiles have absolutely no place in my work. Be prepared to move, laugh, and embrace the environment. 
+            </p>
+            <p className="text-base text-stone-600 font-light leading-relaxed mb-6">
+              My approach is a spontaneous, photojournalistic reportage. While I will gently direct you to catch the best cinematic light, I will never ask you to freeze in place. 
+            </p>
+            <p className="text-base text-stone-600 font-light leading-relaxed">
+              For my filmmaking couples, this is also when we create pure magic. We will venture to specific, breathtaking locations to capture the raw audio and video of your private wedding vows, preserving the true heartbeat of your day forever.
+            </p>
+          </motion.div>
         </section>
 
         {/* What I Value Grid */}
@@ -140,7 +130,7 @@ export default function Experience() {
           className="max-w-2xl mx-auto px-6 text-center mt-32"
         >
           <h2 className="text-3xl font-light text-stone-800 mb-6">Ready for the experience?</h2>
-          <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500">
+          <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] font-bold text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500">
             Send Me A Message
           </Link>
         </motion.section>
@@ -148,7 +138,7 @@ export default function Experience() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] tracking-widest uppercase text-center">
+      <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] font-bold tracking-widest uppercase text-center">
         © 2026 Francesco Valentinuzzi
       </footer>
 
