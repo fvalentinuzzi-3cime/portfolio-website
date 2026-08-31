@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 relative ${inter.className}`}>
       
-      {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
+     {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -85,14 +85,32 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-6">
                 <Link
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full py-4 border border-stone-800 text-stone-800 text-center font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
                 >
-                  Inquire
+                  Inquire via Form
                 </Link>
+
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                  <a 
+                    href="mailto:fvalentinuzzi@studio3cime.com?subject=Mobile%20Inquiry" 
+                    className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+                  >
+                    Email Directly
+                  </a>
+                  <span className="text-stone-400 font-light">/</span>
+                  <a 
+                    href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect." 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+                  >
+                    WhatsApp Me
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

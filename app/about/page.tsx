@@ -193,7 +193,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Call to Action */}
+{/* Call to Action */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
           className="max-w-2xl mx-auto px-6 text-center border-t border-stone-300 pt-32"
@@ -202,9 +202,31 @@ export default function About() {
           <p className="text-sm text-stone-600 font-light mb-10">
             I can't wait to connect with you and tell your incredible story. 
           </p>
-          <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500 font-bold">
-            Send Me A Message
-          </Link>
+          
+          {/* --- MULTIPLE CONTACT OPTIONS --- */}
+          <div className="flex flex-col items-center gap-8">
+            <Link href="/#contact" className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500 font-bold">
+              Send Me A Message
+            </Link>
+
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=General%20Inquiry" 
+                className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+              >
+                Email Directly
+              </a>
+              <span className="text-stone-400 font-light">/</span>
+              <a 
+                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect%20and%20create%20something%20beautiful." 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+              >
+                WhatsApp Me
+              </a>
+            </div>
+          </div>
         </motion.section>
 
       </main>
