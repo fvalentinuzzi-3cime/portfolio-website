@@ -11,9 +11,6 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
-  // New state for handling the contact form submission
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   // This listens for when the user scrolls down the page
   useEffect(() => {
@@ -36,35 +33,6 @@ export default function Home() {
       document.body.style.overflow = "auto";
     }
   }
-
-  // Function to handle form submission gracefully without reloading the page
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus("submitting");
-    
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    try {
-      // REPLACE THIS URL WITH YOUR FORMSPREE ENDPOINT
-      const response = await fetch("https://formspree.io/f/YOUR_ENDPOINT_HERE", {
-        method: "POST",
-        body: data,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (response.ok) {
-        setFormStatus("success");
-        form.reset();
-      } else {
-        setFormStatus("error");
-      }
-    } catch (error) {
-      setFormStatus("error");
-    }
-  };
 
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 relative ${inter.className}`}>
@@ -118,29 +86,23 @@ export default function Home() {
               </div>
               
               <div className="mt-auto flex flex-col gap-6">
-                <Link
-                  href="/#contact"
+                <a
+                  href="mailto:fvalentinuzzi@studio3cime.com?subject=Website%20Inquiry"
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full py-4 border border-stone-800 text-stone-800 text-center font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
                 >
-                  Inquire via Form
-                </Link>
+                  Send an Email
+                </a>
 
                 <div className="flex flex-wrap justify-center items-center gap-4">
-                  <a 
-                    href="mailto:fvalentinuzzi@studio3cime.com?subject=Mobile%20Inquiry" 
-                    className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
-                  >
-                    Email Directly
-                  </a>
-                  <span className="text-stone-400 font-light">/</span>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">Or reach out via</span>
                   <a 
                     href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect." 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
-                    WhatsApp Me
+                    WhatsApp
                   </a>
                 </div>
               </div>
@@ -297,49 +259,36 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- CONTACT --- */}
+        {/* --- CONTACT (No Form) --- */}
         <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
           <div className="max-w-xl mx-auto text-center">
             
-            {formStatus === "success" ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }} 
-                animate={{ opacity: 1, scale: 1 }} 
-                className="py-16"
-              >
-                <h2 className="text-3xl md:text-4xl mb-6 font-light text-stone-800">Thank You.</h2>
-                <p className="text-stone-600 font-light text-sm md:text-base leading-relaxed">
-                  Your message has been successfully sent.<br/>I will review your inquiry and get back to you shortly.
-                </p>
-              </motion.div>
-            ) : (
-              <>
-                <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
-                <p className="text-stone-600 mb-16 font-light text-sm">
-                  Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
-                </p>
-                
-                <form onSubmit={handleFormSubmit} className="flex flex-col gap-10 text-left">
-                  {/* Added name="" attributes so Formspree knows what data is what */}
-                  <input required type="text" name="name" placeholder="Name *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
-                  <input required type="email" name="email" placeholder="Email address *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
-                  <textarea required name="message" placeholder="Tell me about your vision, dates, and ideas *" rows={4} className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors resize-none text-sm placeholder:text-stone-500"></textarea>
-                  
-                  {formStatus === "error" && (
-                    <p className="text-red-800 text-xs font-bold text-center">Something went wrong. Please try emailing directly.</p>
-                  )}
-
-                  <button 
-                    type="submit" 
-                    disabled={formStatus === "submitting"}
-                    className="self-center mt-8 px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {formStatus === "submitting" ? "Sending..." : "Send Inquiry"}
-                  </button>
-                </form>
-              </>
-            )}
+            <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
+            <p className="text-stone-600 mb-16 font-light text-sm">
+              Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
+            </p>
             
+            <div className="flex flex-col items-center gap-8">
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=Website%20Inquiry" 
+                className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
+              >
+                Send an Email
+              </a>
+
+              <div className="flex flex-wrap justify-center items-center gap-4">
+                <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">Or reach out via</span>
+                <a 
+                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect%20about%20a%20project." 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
           </div>
         </section>
       </main>
