@@ -178,7 +178,7 @@ export default function Home() {
               </ul>
 
               <div className="w-full aspect-[3/2] bg-stone-300 relative overflow-hidden mb-8">
-                 <Image src="/redhair-girl.jpeg" alt="Redhair girl black and white" fill className="object-cover" />
+                 <Image src="/paris-love.jpeg" alt="Tour Eiffel at night with text love each other above the Seine river" fill className="object-cover" />
               </div>
               
               <div className="flex justify-end mb-12">
