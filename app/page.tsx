@@ -17,8 +17,12 @@ const fadeUp: Variants = {
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // State for Pop-ups
+  const [showPromoPopup, setShowPromoPopup] = useState(false);
+  const [showCookieBanner, setShowCookieBanner] = useState(false);
 
-  // This listens for when the user scrolls down the page
+  // This listens for scroll events and handles the pop-up/cookie logic
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -29,19 +33,111 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    // Show promo popup after 4 seconds IF they haven't closed it before
+    const hasSeenPromo = localStorage.getItem("seenPromo");
+    if (!hasSeenPromo) {
+      const timer = setTimeout(() => setShowPromoPopup(true), 4000);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+
+    // Check for cookie consent
+    const hasCookieConsent = localStorage.getItem("cookieConsent");
+    if (!hasCookieConsent) {
+      setShowCookieBanner(true);
+    }
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
   if (typeof window !== "undefined") {
-    if (isMenuOpen) {
+    if (isMenuOpen || showPromoPopup) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
   }
 
+  const closePromo = () => {
+    setShowPromoPopup(false);
+    localStorage.setItem("seenPromo", "true");
+  };
+
+  const acceptCookies = () => {
+    setShowCookieBanner(false);
+    localStorage.setItem("cookieConsent", "true");
+  };
+
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 relative ${inter.className}`}>
+      
+      {/* --- MINIMAL PROMO POP-UP --- */}
+      <AnimatePresence>
+        {showPromoPopup && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-stone-900/40 backdrop-blur-sm"
+          >
+            <div className="bg-stone-800 text-[#E9E8E6] p-10 md:p-16 max-w-lg w-full text-center relative shadow-2xl">
+              <button onClick={closePromo} className="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors">
+                <span className="text-[10px] uppercase tracking-widest font-bold">Close ✕</span>
+              </button>
+              
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block mt-4">Exclusive 2026 Opportunity</span>
+              <h3 className="text-3xl font-light mb-4">The Editorial Rate</h3>
+              <p className="text-xs text-stone-300 font-light leading-relaxed mb-8">
+                As I expand my European portfolio, enjoy a <strong>50% reduction</strong> on all collections booked before Dec 31, 2026.
+              </p>
+              
+              <div className="flex flex-wrap justify-center items-center gap-6">
+                <a 
+                  href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
+                >
+                  Email Directly
+                </a>
+                <span className="text-stone-600 font-light">/</span>
+                <a 
+                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
+                >
+                  WhatsApp Me
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* --- GDPR COOKIE BANNER --- */}
+      <AnimatePresence>
+        {showCookieBanner && (
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-0 left-0 w-full z-[150] bg-[#E9E8E6] border-t border-stone-300 p-6 md:px-12 md:py-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <p className="text-[10px] text-stone-600 uppercase tracking-widest leading-relaxed text-center md:text-left">
+              This website uses cookies to ensure you get the best experience. By continuing to browse, you agree to our <Link href="/privacy" className="font-bold border-b border-stone-600 hover:text-stone-800 transition-colors">Privacy Policy</Link>.
+            </p>
+            <div className="flex items-center gap-4 shrink-0 justify-center md:justify-end">
+              <button onClick={acceptCookies} className="px-8 py-3 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[9px] font-bold hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors">
+                Accept All
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
       <AnimatePresence>
@@ -254,7 +350,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/dolomites.jpg" alt="Dolomites Landscape" fill className="object-cover" />
+               <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
                <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill className="object-cover" />
@@ -283,28 +379,22 @@ export default function Home() {
               This introductory rate applies to any elopement, wedding, or commercial project secured before <strong className="text-white font-medium">December 31, 2026</strong>.
             </p>
             
-            <div className="flex flex-col items-center gap-6">
-              {/* <Link href="/#contact" className="inline-block px-12 py-4 border border-[#E9E8E6] text-[#E9E8E6] uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-[#E9E8E6] hover:text-stone-800 transition-colors duration-500">
-                Claim This Rate
-              </Link> */}
-              
-              <div className="flex flex-wrap justify-center items-center gap-4">
-                <a 
-                  href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
-                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 hover:text-stone-200 transition-colors border-b-2 border-stone-600 hover:border-stone-300 pb-1"
-                >
-                  Email Directly
-                </a>
-                <span className="text-stone-600 font-light">/</span>
-                <a 
-                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 hover:text-stone-200 transition-colors border-b-2 border-stone-600 hover:border-stone-300 pb-1"
-                >
-                  WhatsApp Me
-                </a>
-              </div>
+            <div className="flex flex-wrap justify-center items-center gap-6 mt-10">
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
+              >
+                Email Directly
+              </a>
+              <span className="text-stone-600 font-light">/</span>
+              <a 
+                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
+              >
+                WhatsApp Me
+              </a>
             </div>
           </div>
         </motion.section>
@@ -345,7 +435,7 @@ export default function Home() {
 
       {/* --- FOOTER --- */}
       <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] font-bold tracking-widest uppercase">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left mb-16">
           
           <div className="flex flex-col gap-4">
             <span className="text-stone-800 mb-2">Explore</span>
@@ -363,8 +453,8 @@ export default function Home() {
 
           <div className="flex flex-col gap-4">
             <span className="text-stone-800 mb-2">Legal</span>
-            <Link href="#privacy" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Privacy Policy</Link>
-            <Link href="#terms" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Terms of Service</Link>
           </div>
           
           <div className="flex flex-col gap-4 md:text-right">
@@ -373,6 +463,14 @@ export default function Home() {
              <span>© 2026 Francesco Valentinuzzi</span>
           </div>
 
+        </div>
+
+        {/* --- SEO LOCATIONS BLOCK --- */}
+        <div className="border-t border-stone-300 pt-12 flex flex-col gap-4 text-center">
+          <span className="text-stone-800">Destinations & Coverage</span>
+          <span className="text-[8px] md:text-[9px] text-stone-400 leading-loose max-w-5xl mx-auto">
+            BASED IN AVIANO, ITALY — PHOTOGRAPHING DESTINATION WEDDINGS, ELOPEMENTS, AND COMMERCIAL CAMPAIGNS IN THE DOLOMITES, LAKE COMO, TUSCANY, AMALFI COAST, VENICE, ROME, SICILY, SARDINIA, THE SWISS ALPS, AND ACROSS EUROPE. AVAILABLE FOR WORLDWIDE TRAVEL.
+          </span>
         </div>
       </footer>
       
