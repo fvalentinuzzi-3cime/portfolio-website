@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // New state for handling the contact form submission
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   // This listens for when the user scrolls down the page
   useEffect(() => {
@@ -34,10 +37,39 @@ export default function Home() {
     }
   }
 
+  // Function to handle form submission gracefully without reloading the page
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      // REPLACE THIS URL WITH YOUR FORMSPREE ENDPOINT
+      const response = await fetch("https://formspree.io/f/YOUR_ENDPOINT_HERE", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      setFormStatus("error");
+    }
+  };
+
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 relative ${inter.className}`}>
       
-     {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
+      {/* --- FULL SCREEN MOBILE MENU OVERLAY --- */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -130,7 +162,6 @@ export default function Home() {
           </ul>
         </div>
         
-        {/* Logo - Made larger and fully clickable */}
         <div className="justify-self-center w-28 h-28 md:w-[180px] md:h-[180px] relative flex items-center justify-center">
           <Link href="/" className="w-full h-full relative block hover:scale-105 transition-transform duration-500">
             <Image 
@@ -162,7 +193,6 @@ export default function Home() {
         
         {/* --- CINEMATIC HERO SECTION --- */}
         <section className="relative w-full min-h-[85vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden mb-24 md:mb-40">
-          
           <Image 
             src="/hero.jpeg" 
             alt="Cinematic destination wedding in the Dolomites" 
@@ -171,11 +201,7 @@ export default function Home() {
             quality={100}
             className="object-cover object-center" 
           />
-
-          {/* The Cinematic Dark Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/10 to-stone-900/70" />
-
-          {/* Floating Text */}
           <div className="relative z-10 text-center px-6 mt-24">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -183,7 +209,6 @@ export default function Home() {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="text-4xl md:text-7xl font-light text-[#E9E8E6] tracking-wide mb-6"
             >
-              {/* Francesco Valentinuzzi */}
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0 }}
@@ -194,13 +219,11 @@ export default function Home() {
               Cinematic Destination Photographer & Film Director
             </motion.p>
           </div>
-          
         </section>
 
         {/* --- ABOUT SECTION --- */}
         <section id="about" className="max-w-2xl mx-auto px-6 text-center mb-32 md:mb-48">
           <h1 className="text-3xl md:text-5xl mb-8 font-light text-stone-800 leading-tight">Hi, I'm Francesco</h1>
-          
           <div className="text-stone-600 leading-relaxed font-light text-sm md:text-base space-y-4">
             <p>
               I am an award-winning photographer, film director, and local guide based in Northern Italy.<br />
@@ -261,60 +284,62 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Added 3-Image Showcase Strip */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/horsesiceland Large.jpeg" alt="Wildhorses playing in frozen ground in Iceland" fill className="object-cover" />
+               <Image src="/dolomites.jpg" alt="Dolomites Landscape" fill className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
                <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/Ephemeral 16-9 Large.jpeg" alt="Iceland landscape at sunset with ice climber" fill className="object-cover" />
+               <Image src="/Tuscany.jpeg" alt="Tuscany Landscape" fill className="object-cover" />
             </div>
           </div>
         </section>
 
-{/* --- CONTACT --- */}
+        {/* --- CONTACT --- */}
         <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
           <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
-            <p className="text-stone-600 mb-8 font-light text-sm">
-              Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
-            </p>
             
-            {/* --- DIRECT CONTACT LINKS (Anti-Spam Approach) --- */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-16">
-              
-              <a 
-                href="mailto:fvalentinuzzi@studio3cime.com" 
-                className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+            {formStatus === "success" ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                className="py-16"
               >
-                fvalentinuzzi@studio3cime.com
-              </a>
+                <h2 className="text-3xl md:text-4xl mb-6 font-light text-stone-800">Thank You.</h2>
+                <p className="text-stone-600 font-light text-sm md:text-base leading-relaxed">
+                  Your message has been successfully sent.<br/>I will review your inquiry and get back to you shortly.
+                </p>
+              </motion.div>
+            ) : (
+              <>
+                <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
+                <p className="text-stone-600 mb-16 font-light text-sm">
+                  Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
+                </p>
+                
+                <form onSubmit={handleFormSubmit} className="flex flex-col gap-10 text-left">
+                  {/* Added name="" attributes so Formspree knows what data is what */}
+                  <input required type="text" name="name" placeholder="Name *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
+                  <input required type="email" name="email" placeholder="Email address *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
+                  <textarea required name="message" placeholder="Tell me about your vision, dates, and ideas *" rows={4} className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors resize-none text-sm placeholder:text-stone-500"></textarea>
+                  
+                  {formStatus === "error" && (
+                    <p className="text-red-800 text-xs font-bold text-center">Something went wrong. Please try emailing directly.</p>
+                  )}
 
-              <span className="hidden md:block text-stone-400 font-light">/</span>
-              
-              <a 
-                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20am%20reaching%20out%20from%20your%20website." 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
-              >
-                Message via WhatsApp
-              </a>
-
-            </div>
+                  <button 
+                    type="submit" 
+                    disabled={formStatus === "submitting"}
+                    className="self-center mt-8 px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === "submitting" ? "Sending..." : "Send Inquiry"}
+                  </button>
+                </form>
+              </>
+            )}
             
-            <form className="flex flex-col gap-10 text-left">
-              <input type="text" placeholder="Name *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
-              <input type="email" placeholder="Email address *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
-              <textarea placeholder="Tell me about your vision, dates, and ideas *" rows={4} className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors resize-none text-sm placeholder:text-stone-500"></textarea>
-              
-              <button type="submit" className="self-center mt-8 px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500">
-                Send Inquiry
-              </button>
-            </form>
           </div>
         </section>
       </main>
