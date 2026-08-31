@@ -284,9 +284,9 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col items-center gap-6">
-              <Link href="/#contact" className="inline-block px-12 py-4 border border-[#E9E8E6] text-[#E9E8E6] uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-[#E9E8E6] hover:text-stone-800 transition-colors duration-500">
+              {/* <Link href="/#contact" className="inline-block px-12 py-4 border border-[#E9E8E6] text-[#E9E8E6] uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-[#E9E8E6] hover:text-stone-800 transition-colors duration-500">
                 Claim This Rate
-              </Link>
+              </Link> */}
               
               <div className="flex flex-wrap justify-center items-center gap-4">
                 <a 
