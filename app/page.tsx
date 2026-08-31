@@ -9,7 +9,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 
 // Animation variants for smooth fade-ins
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
 };
