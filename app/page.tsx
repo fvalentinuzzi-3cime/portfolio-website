@@ -257,13 +257,36 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- CONTACT --- */}
+{/* --- CONTACT --- */}
         <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
-            <p className="text-stone-600 mb-16 font-light text-sm">
+            <p className="text-stone-600 mb-8 font-light text-sm">
               Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
             </p>
+            
+            {/* --- DIRECT CONTACT LINKS (Anti-Spam Approach) --- */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-16">
+              
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com" 
+                className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+              >
+                fvalentinuzzi@studio3cime.com
+              </a>
+
+              <span className="hidden md:block text-stone-400 font-light">/</span>
+              
+              <a 
+                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20am%20reaching%20out%20from%20your%20website." 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+              >
+                Message via WhatsApp
+              </a>
+
+            </div>
             
             <form className="flex flex-col gap-10 text-left">
               <input type="text" placeholder="Name *" className="w-full bg-transparent border-b border-stone-400 py-2 focus:outline-none focus:border-stone-800 transition-colors text-sm placeholder:text-stone-500" />
