@@ -4,9 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
+
+// Animation variants for smooth fade-ins
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+};
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -258,6 +264,50 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* --- 2026 EDITORIAL RATE BANNER --- */}
+        <motion.section 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="max-w-5xl mx-auto px-6 mb-32 md:mb-48"
+        >
+          <div className="bg-stone-800 text-[#E9E8E6] p-12 md:p-20 text-center shadow-lg relative overflow-hidden">
+            {/* Subtle background accent */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-stone-500 via-stone-300 to-stone-500 opacity-20"></div>
+            
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-6 block">Exclusive 2026 Opportunity</span>
+            <h2 className="text-3xl md:text-4xl font-light mb-6">The Editorial Portfolio Rate</h2>
+            
+            <p className="text-sm md:text-base text-stone-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+              As I selectively expand my European portfolio for the upcoming season, I am offering an exclusive <strong className="text-white font-medium">50% reduction</strong> on all photography and filmmaking collections. 
+              <br /><br />
+              This introductory rate applies to any elopement, wedding, or commercial project secured before <strong className="text-white font-medium">December 31, 2026</strong>.
+            </p>
+            
+            <div className="flex flex-col items-center gap-6">
+              <Link href="/#contact" className="inline-block px-12 py-4 border border-[#E9E8E6] text-[#E9E8E6] uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-[#E9E8E6] hover:text-stone-800 transition-colors duration-500">
+                Claim This Rate
+              </Link>
+              
+              <div className="flex flex-wrap justify-center items-center gap-4">
+                <a 
+                  href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
+                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 hover:text-stone-200 transition-colors border-b-2 border-stone-600 hover:border-stone-300 pb-1"
+                >
+                  Email Directly
+                </a>
+                <span className="text-stone-600 font-light">/</span>
+                <a 
+                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 hover:text-stone-200 transition-colors border-b-2 border-stone-600 hover:border-stone-300 pb-1"
+                >
+                  WhatsApp Me
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.section>
 
         {/* --- CONTACT (No Form) --- */}
         <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
