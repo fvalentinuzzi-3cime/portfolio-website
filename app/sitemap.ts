@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Replace this with your actual live domain (e.g., https://www.elevi.film or https://francescovalentinuzzi.com)
-  const baseUrl = 'https://www.elevi.film';
+  const baseUrl = 'https://www.francescovalentinuzzi.com';
 
   return [
     {
