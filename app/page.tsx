@@ -62,7 +62,6 @@ export default function Home() {
 
             <div className="flex-1 flex flex-col px-8 pb-10">
               <ul className="flex flex-col gap-5 mt-4 mb-12">
-                {/* Journal removed from the list below */}
                 {["Portfolio", "Services","Experiences", "About"].map((item) => (
                   <li key={item}>
                     <Link
@@ -127,7 +126,6 @@ export default function Home() {
         </div>
         
         <div className="justify-self-end flex items-center gap-6">
-          {/* Journal removed from the right-side nav below */}
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
             <li><Link href="/about" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>About</Link></li>
           </ul>
@@ -219,9 +217,12 @@ export default function Home() {
         </section>
 
         {/* --- SERVICES --- */}
-        <section id="services" className="max-w-5xl mx-auto px-6 mb-32 md:mb-48 text-center border-t border-stone-300 pt-32">
-          <h2 className="text-4xl mb-16 font-light text-stone-800">Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 text-left">
+        <section id="services" className="max-w-6xl mx-auto px-6 mb-32 md:mb-48 border-t border-stone-300 pt-32">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-light text-stone-800">Services</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 text-left mb-24">
             <div>
               <div className="w-full h-64 md:h-80 bg-stone-300 mb-8 relative overflow-hidden">
                  <Image src="/richard.jpeg" alt="Detailed picture of guy focus wearing headset" fill className="object-cover" />
@@ -239,6 +240,19 @@ export default function Home() {
               <p className="text-sm text-stone-600 font-light leading-relaxed">
                 Award-winning cinematography tailored for cinematic destination wedding films, documentaries, and commercial storytelling. Leveraging my background as a film director, I craft emotion-driven short films that capture the true essence and scale of your narrative.
               </p>
+            </div>
+          </div>
+
+          {/* Added 3-Image Showcase Strip */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
+               <Image src="/horsesiceland Large.jpeg" alt="Wildhorses playing in frozen ground in Iceland" fill className="object-cover" />
+            </div>
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
+               <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill className="object-cover" />
+            </div>
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
+               <Image src="/Ephemeral 16-9 Large.jpeg" alt="Iceland landscape at sunset with ice climber" fill className="object-cover" />
             </div>
           </div>
         </section>
@@ -274,7 +288,6 @@ export default function Home() {
             <Link href="/portfolio" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Portfolio</Link>
             <Link href="/services" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Services</Link>
             <Link href="/experiences" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Experiences</Link>
-            {/* Journal removed from footer */}
           </div>
 
           <div className="flex flex-col gap-4">

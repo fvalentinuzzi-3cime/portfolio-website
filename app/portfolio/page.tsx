@@ -44,7 +44,7 @@ export default function Portfolio() {
           className="w-full h-[70vh] md:h-[85vh] relative mb-24 md:mb-32 px-4 md:px-12"
         >
           <div className="w-full h-full relative bg-stone-300 overflow-hidden shadow-sm">
-             <Image src="/portfolio-header.jpeg" alt="Cinematic documentary photography" fill className="object-cover" priority />
+             <Image src="/Alexa-hero-new.jpg" alt="Cinematic documentary photography" fill className="object-cover" priority />
           </div>
         </motion.section>
 
