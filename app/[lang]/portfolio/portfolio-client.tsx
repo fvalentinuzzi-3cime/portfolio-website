@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { motion, Variants } from "framer-motion";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 
@@ -13,27 +14,42 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
 };
 
-export default function Portfolio() {
+export default function PortfolioClient({ dict }: { dict: any }) {
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 ${inter.className}`}>
       
-      {/* Minimal Navbar (Linking back to Home) */}
+{/* Minimal Navbar */}
       <nav className="flex justify-between items-center py-10 px-8 md:px-12 lg:px-24 sticky top-0 z-50 bg-[#E9E8E6]/90 backdrop-blur-sm">
-        <div className="w-[120px]">
-          <Link href="/" className="text-xs font-bold uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
-            ← Back Home
+        
+        {/* LEFT SIDE: Back Home (and Desktop Switcher) */}
+        <div className="w-[120px] flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+          <Link href="/" className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 hover:text-stone-800 transition-colors">
+            {dict.experiences.backHome}
           </Link>
+          {/* Shows only on Desktop */}
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
         </div>
         
+        {/* CENTER: Logo */}
         <div className="text-center w-28 h-28 md:w-[160px] md:h-[160px] mx-auto flex items-center justify-center relative">
           <Link href="/" className="w-full h-full relative block hover:scale-105 transition-transform duration-500">
             <Image src="/portfolio_logo.png" alt="Artist Logo" fill className="object-contain" priority />
           </Link>
         </div>
         
-        <div className="w-[120px] text-right">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1">Portfolio</span>
+        {/* RIGHT SIDE: Page Name (and Mobile Switcher) */}
+        <div className="w-[120px] flex flex-col items-end gap-3 text-right">
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1 w-max">
+            {dict.nav.portfolio}
+          </span>
+          {/* Shows only on Mobile */}
+          <div className="md:hidden">
+            <LanguageSwitcher />
+          </div>
         </div>
+        
       </nav>
 
       <main className="pb-32">
@@ -54,10 +70,10 @@ export default function Portfolio() {
           className="max-w-4xl mx-auto px-6 text-center mb-32"
         >
           <h2 className="text-3xl md:text-5xl font-light text-stone-800 leading-tight mb-8">
-            A deep reverence for storytelling and truth.
+            {dict.portfolioPage.introTitle}
           </h2>
           <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed">
-            Every frame is a celebration of authentic connection—whether capturing the intimate vulnerability of an alpine elopement or the raw energy of a commercial narrative. Crafted with intention, down to the quietest detail.
+            {dict.portfolioPage.introDesc}
           </p>
         </motion.section>
 
@@ -66,8 +82,8 @@ export default function Portfolio() {
         ========================================= */}
         <section className="mb-40">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter I</span>
-            <h2 className="text-3xl md:text-4xl font-light text-stone-800">Couples & Elopements</h2>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap1Eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap1Title}</h2>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
           </motion.div>
 
@@ -83,7 +99,7 @@ export default function Portfolio() {
                 <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
                   <Image src="/portfolio-intentional.jpeg" alt="Intentional wedding detail" fill className="object-cover" />
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">Intentional Details</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">{dict.portfolioPage.chap1Subtitle}</p>
               </motion.div>
             </div>
           </div>
@@ -94,9 +110,9 @@ export default function Portfolio() {
         ========================================= */}
         <section className="mb-40 bg-stone-200/50 py-32 border-y border-stone-300">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter II</span>
-            <h2 className="text-3xl md:text-4xl font-light text-stone-800">Landscapes & Places</h2>
-            <p className="text-sm text-stone-500 font-light mt-4">Italy, USA & Beyond</p>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap2Eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap2Title}</h2>
+            <p className="text-sm text-stone-500 font-light mt-4">{dict.portfolioPage.chap2Subtitle1}</p>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
           </motion.div>
 
@@ -105,7 +121,7 @@ export default function Portfolio() {
                 <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-stone-300 relative overflow-hidden shadow-sm">
                   <Image src="/Tuscany.jpeg" alt="Tuscany landscape" fill className="object-cover" />
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 mt-4 text-center">Tuscany, Italy</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 mt-4 text-center">{dict.portfolioPage.chap2Subtitle2}</p>
             </motion.div>
             
             <div className="flex flex-col md:flex-row gap-12 mt-24">
@@ -128,8 +144,8 @@ export default function Portfolio() {
         ========================================= */}
         <section className="mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter III</span>
-            <h2 className="text-3xl md:text-4xl font-light text-stone-800">Commercial & Action</h2>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap3Eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap3Title}</h2>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
           </motion.div>
 
@@ -153,7 +169,7 @@ export default function Portfolio() {
 
       {/* Simple Footer for Portfolio Page */}
       <footer className="border-t border-stone-300 mx-6 md:mx-24 py-16 text-stone-500 text-[10px] font-bold tracking-widest uppercase text-center">
-        © 2026 Francesco Valentinuzzi
+        {dict.footer.copyright}
       </footer>
 
     </div>

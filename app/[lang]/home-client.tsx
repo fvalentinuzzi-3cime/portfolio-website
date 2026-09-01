@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 
@@ -14,7 +15,7 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
 };
 
-export default function Home() {
+export default function HomeClient({ dict }: { dict: any }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   
@@ -87,13 +88,13 @@ export default function Home() {
           >
             <div className="bg-stone-800 text-[#E9E8E6] p-10 md:p-16 max-w-lg w-full text-center relative shadow-2xl">
               <button onClick={closePromo} className="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors">
-                <span className="text-[10px] uppercase tracking-widest font-bold">Close ✕</span>
+                <span className="text-[10px] uppercase tracking-widest font-bold">{dict.promo.close}</span>
               </button>
               
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block mt-4">Exclusive 2026 Opportunity</span>
-              <h3 className="text-3xl font-light mb-4">The Editorial Rate</h3>
+              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block mt-4">{dict.promo.eyebrow}</span>
+              <h3 className="text-3xl font-light mb-4">{dict.promo.popupTitle}</h3>
               <p className="text-xs text-stone-300 font-light leading-relaxed mb-8">
-                As I expand my European portfolio, enjoy a <strong>50% reduction</strong> on all collections booked before Dec 31, 2026.
+                {dict.promo.popupDesc1} <strong>{dict.promo.popupDiscount}</strong> {dict.promo.popupDesc2}
               </p>
               
               <div className="flex flex-wrap justify-center items-center gap-6">
@@ -101,7 +102,7 @@ export default function Home() {
                   href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
                 >
-                  Email Directly
+                  {dict.promo.emailBtn}
                 </a>
                 <span className="text-stone-600 font-light">/</span>
                 <a 
@@ -110,7 +111,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
                 >
-                  WhatsApp Me
+                  {dict.promo.whatsappBtn}
                 </a>
               </div>
             </div>
@@ -128,11 +129,11 @@ export default function Home() {
             className="fixed bottom-0 left-0 w-full z-[150] bg-[#E9E8E6] border-t border-stone-300 p-6 md:px-12 md:py-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
           >
             <p className="text-[10px] text-stone-600 uppercase tracking-widest leading-relaxed text-center md:text-left">
-              This website uses cookies to ensure you get the best experience. By continuing to browse, you agree to our <Link href="/privacy" className="font-bold border-b border-stone-600 hover:text-stone-800 transition-colors">Privacy Policy</Link>.
+              {dict.cookies.text} <Link href="/privacy" className="font-bold border-b border-stone-600 hover:text-stone-800 transition-colors">{dict.cookies.privacyLink}</Link>.
             </p>
             <div className="flex items-center gap-4 shrink-0 justify-center md:justify-end">
               <button onClick={acceptCookies} className="px-8 py-3 border border-stone-800 text-stone-800 uppercase tracking-[0.2em] text-[9px] font-bold hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors">
-                Accept All
+                {dict.cookies.acceptBtn}
               </button>
             </div>
           </motion.div>
@@ -157,24 +158,17 @@ export default function Home() {
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-2 group shrink-0"
               >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 font-bold">Close Menu</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-stone-800 font-bold">{dict.nav.closeMenu}</span>
                 <span className="w-3 h-3 rounded-full border border-stone-800"></span>
               </button>
             </div>
 
             <div className="flex-1 flex flex-col px-8 pb-10">
               <ul className="flex flex-col gap-5 mt-4 mb-12">
-                {["Portfolio", "Services","Experiences", "About"].map((item) => (
-                  <li key={item}>
-                    <Link
-                      href={item === "Portfolio" ? "/portfolio" : `/${item.toLowerCase()}`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                <li><Link href="/portfolio" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors">{dict.nav.portfolio}</Link></li>
+                <li><Link href="/services" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors">{dict.nav.services}</Link></li>
+                <li><Link href="/experiences" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors">{dict.nav.experiences}</Link></li>
+                <li><Link href="/about" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold uppercase tracking-[0.15em] text-stone-800 hover:text-stone-500 transition-colors">{dict.nav.about}</Link></li>
               </ul>
 
               <div className="w-full aspect-[3/2] bg-stone-300 relative overflow-hidden mb-8">
@@ -183,7 +177,7 @@ export default function Home() {
               
               <div className="flex justify-end mb-12">
                 <p className="text-sm text-stone-800 font-light text-right max-w-[260px] leading-relaxed">
-                  Crafting cinematic, authentic narratives for destination weddings, intimate elopements, and commercial brand campaigns.
+                  {dict.menu.description}
                 </p>
               </div>
               
@@ -193,18 +187,18 @@ export default function Home() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full py-4 border border-stone-800 text-stone-800 text-center font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
                 >
-                  Send an Email
+                  {dict.contact.sendEmailBtn}
                 </a>
 
                 <div className="flex flex-wrap justify-center items-center gap-4">
-                  <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">Or reach out via</span>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">{dict.contact.reachOutText}</span>
                   <a 
                     href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect." 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
-                    WhatsApp
+                    {dict.contact.whatsappBtn}
                   </a>
                 </div>
               </div>
@@ -218,14 +212,21 @@ export default function Home() {
         isScrolled ? "py-4 md:py-6 bg-[#E9E8E6]/95 backdrop-blur-md shadow-sm" : "py-6 md:py-10 bg-transparent"
       }`}>
         
-        <div className="justify-self-start">
+        {/* Left Side: Mobile Switcher & Desktop Links */}
+        <div className="justify-self-start flex items-center gap-8 md:gap-10">
+          {/* MOBILE ONLY SWITCHER */}
+          <div className={`md:hidden transition-all duration-700 ${!isScrolled ? "brightness-0 invert opacity-90" : ""}`}>
+            <LanguageSwitcher />
+          </div>
+
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
-            <li><Link href="/portfolio" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Portfolio</Link></li>
-            <li><Link href="/services" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Services</Link></li>
-            <li><Link href="/experiences" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>Experiences</Link></li>
+            <li><Link href="/portfolio" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>{dict.nav.portfolio}</Link></li>
+            <li><Link href="/services" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>{dict.nav.services}</Link></li>
+            <li><Link href="/experiences" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>{dict.nav.experiences}</Link></li>
           </ul>
         </div>
         
+        {/* Center: Logo */}
         <div className="justify-self-center w-28 h-28 md:w-[180px] md:h-[180px] relative flex items-center justify-center">
           <Link href="/" className="w-full h-full relative block hover:scale-105 transition-transform duration-500">
             <Image 
@@ -238,16 +239,22 @@ export default function Home() {
           </Link>
         </div>
         
-        <div className="justify-self-end flex items-center gap-6">
+        {/* Right Side: Desktop About Link, Desktop Switcher, & Mobile Menu Toggle */}
+        <div className="justify-self-end flex items-center gap-6 md:gap-8">
           <ul className={`hidden md:flex flex-wrap gap-6 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${isScrolled ? "text-stone-500" : "text-[#E9E8E6]/90"}`}>
-            <li><Link href="/about" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>About</Link></li>
+            <li><Link href="/about" className={`transition-all duration-500 hover:underline hover:underline-offset-8 decoration-2 ${isScrolled ? "hover:text-stone-800" : "hover:text-white"}`}>{dict.nav.about}</Link></li>
           </ul>
+
+          {/* DESKTOP ONLY SWITCHER */}
+          <div className={`hidden md:block transition-all duration-700 ${!isScrolled ? "brightness-0 invert opacity-90" : ""}`}>
+            <LanguageSwitcher />
+          </div>
 
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={`flex md:hidden items-center gap-2 group shrink-0 transition-colors duration-500 ${isScrolled ? "text-stone-800" : "text-[#E9E8E6]"}`}
           >
-            <span className="text-xs uppercase tracking-[0.2em] font-bold">Menu</span>
+            <span className="text-xs uppercase tracking-[0.2em] font-bold">{dict.nav.menu}</span>
             <span className={`w-3 h-3 rounded-full border transition-colors duration-500 ${isScrolled ? "border-stone-800" : "border-[#E9E8E6]"}`}></span>
           </button>
         </div>
@@ -280,43 +287,38 @@ export default function Home() {
               transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
               className="text-[9px] md:text-xl font-bold uppercase tracking-[0.3em] text-[#E9E8E6]/90"
             >
-              Cinematic Destination Photographer & Film Director
+              {dict.home.heroSubtitle}
             </motion.p>
           </div>
         </section>
 
         {/* --- ABOUT SECTION --- */}
         <section id="about" className="max-w-2xl mx-auto px-6 text-center mb-32 md:mb-48">
-          <h1 className="text-3xl md:text-5xl mb-8 font-light text-stone-800 leading-tight">Hi, I'm Francesco</h1>
+          <h1 className="text-3xl md:text-5xl mb-8 font-light text-stone-800 leading-tight">{dict.home.greeting}</h1>
           <div className="text-stone-600 leading-relaxed font-light text-sm md:text-base space-y-4">
-            <p>
-              I am an award-winning photographer, film director, and local guide based in Northern Italy.<br />
-              I specialize in crafting cinematic, authentic narratives for destination weddings, intimate elopements, and commercial brand campaigns.
-            </p>
-            <p>
-              Whether you envision a rugged mountainscape, a sun-drenched beach shoot, or an elegant historical location, I help you design your day. Leveraging my deep local knowledge, I assist couples and brands in discovering unique, off-the-beaten-path spots and securing the region's most breathtaking backdrops for your story.
-            </p>
+            <p>{dict.home.aboutP1}</p>
+            <p>{dict.home.aboutP2}</p>
           </div>
         </section>
 
         {/* --- PORTFOLIO PREVIEW --- */}
         <section id="portfolio" className="max-w-7xl mx-auto px-6 mb-32 md:mb-48">
           <div className="text-center mb-20">
-            <h2 className="text-4xl mb-4 font-light text-stone-800">Selected Works</h2>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">Visuals for life and business</p>
+            <h2 className="text-4xl mb-4 font-light text-stone-800">{dict.portfolio.title}</h2>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">{dict.portfolio.subtitle}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             <Link href="/portfolio" className="group cursor-pointer block">
               <div className="relative aspect-[3/4] bg-stone-300 mb-8 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
                 <Image src="/Alexa 11 Large.jpeg" alt="Wedding" fill className="object-cover" />
               </div>
-              <h3 className="text-3xl mb-3 font-light text-stone-800">Elopements & Proposals</h3>
+              <h3 className="text-3xl mb-3 font-light text-stone-800">{dict.portfolio.elopements}</h3>
             </Link>
             <Link href="/portfolio" className="group cursor-pointer block md:mt-32">
               <div className="relative aspect-[3/4] bg-stone-300 mb-8 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
                 <Image src="/erewhon.jpeg" alt="Commercial" fill className="object-cover" />
               </div>
-              <h3 className="text-3xl mb-3 font-light text-stone-800">Commercial Films & Photo</h3>
+              <h3 className="text-3xl mb-3 font-light text-stone-800">{dict.portfolio.commercial}</h3>
             </Link>
           </div>
         </section>
@@ -324,7 +326,7 @@ export default function Home() {
         {/* --- SERVICES --- */}
         <section id="services" className="max-w-6xl mx-auto px-6 mb-32 md:mb-48 border-t border-stone-300 pt-32">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-stone-800">Services</h2>
+            <h2 className="text-4xl font-light text-stone-800">{dict.services.title}</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 text-left mb-24">
@@ -332,31 +334,31 @@ export default function Home() {
               <div className="w-full h-64 md:h-80 bg-stone-300 mb-8 relative overflow-hidden">
                  <Image src="/richard.jpeg" alt="Detailed picture of guy focus wearing headset" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl mb-4 font-light text-stone-800">Photography</h3>
+              <h3 className="text-2xl mb-4 font-light text-stone-800">{dict.services.photoTitle}</h3>
               <p className="text-sm text-stone-600 font-light leading-relaxed">
-                From intimate sunrise proposals in the Dolomites to high-end commercial brand campaigns across Italy. My photography blends an editorial aesthetic with raw, authentic emotion. You receive a meticulously curated, high-resolution digital gallery and access to premium print options.
+                {dict.services.photoDesc}
               </p>
             </div>
             <div>
               <div className="w-full h-64 md:h-80 bg-stone-300 mb-8 relative overflow-hidden">
-                <Image src="/filmmaking-2-Large.jpeg" alt="Filmmaking Services" fill className="object-cover" />
+                <Image src="/filmmaking-2-Large.jpeg" alt="Filmmaking Services" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               </div>
-              <h3 className="text-2xl mb-4 font-light text-stone-800">Filmmaking</h3>
+              <h3 className="text-2xl mb-4 font-light text-stone-800">{dict.services.filmTitle}</h3>
               <p className="text-sm text-stone-600 font-light leading-relaxed">
-                Award-winning cinematography tailored for cinematic destination wedding films, documentaries, and commercial storytelling. Leveraging my background as a film director, I craft emotion-driven short films that capture the true essence and scale of your narrative.
+                {dict.services.filmDesc}
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill className="object-cover" />
+               <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
-               <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill className="object-cover" />
+               <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/Tuscany.jpeg" alt="Tuscany Landscape" fill className="object-cover" />
+               <Image src="/Tuscany.jpeg" alt="Tuscany Landscape" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
           </div>
         </section>
@@ -370,13 +372,13 @@ export default function Home() {
             {/* Subtle background accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-stone-500 via-stone-300 to-stone-500 opacity-20"></div>
             
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-6 block">Exclusive 2026 Opportunity</span>
-            <h2 className="text-3xl md:text-4xl font-light mb-6">The Editorial Portfolio Rate</h2>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-6 block">{dict.promo.eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-light mb-6">{dict.promo.bannerTitle}</h2>
             
             <p className="text-sm md:text-base text-stone-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-              As I selectively expand my European portfolio for the upcoming season, I am offering an exclusive <strong className="text-white font-medium">50% reduction</strong> on all photography and filmmaking collections. 
+              {dict.promo.bannerDesc1} <strong className="text-white font-medium">{dict.promo.bannerDiscount}</strong> {dict.promo.bannerDesc2}
               <br /><br />
-              This introductory rate applies to any elopement, wedding, or commercial project secured before <strong className="text-white font-medium">December 31, 2026</strong>.
+              {dict.promo.bannerDesc3} <strong className="text-white font-medium">{dict.promo.bannerDate}</strong>.
             </p>
             
             <div className="flex flex-wrap justify-center items-center gap-6 mt-10">
@@ -384,7 +386,7 @@ export default function Home() {
                 href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
               >
-                Email Directly
+                {dict.promo.emailBtn}
               </a>
               <span className="text-stone-600 font-light">/</span>
               <a 
@@ -393,7 +395,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
               >
-                WhatsApp Me
+                {dict.promo.whatsappBtn}
               </a>
             </div>
           </div>
@@ -403,9 +405,9 @@ export default function Home() {
         <section id="contact" className="bg-[#E2E1DF] py-32 md:py-48 px-6 border-t border-stone-300">
           <div className="max-w-xl mx-auto text-center">
             
-            <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">Let's Connect</h2>
+            <h2 className="text-4xl md:text-5xl mb-6 font-light text-stone-800">{dict.contact.title}</h2>
             <p className="text-stone-600 mb-16 font-light text-sm">
-              Currently accepting bookings for elopements, weddings, and commercial projects. Reach out to discuss your vision.
+              {dict.contact.description}
             </p>
             
             <div className="flex flex-col items-center gap-8">
@@ -413,18 +415,18 @@ export default function Home() {
                 href="mailto:fvalentinuzzi@studio3cime.com?subject=Website%20Inquiry" 
                 className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
               >
-                Send an Email
+                {dict.contact.sendEmailBtn}
               </a>
 
               <div className="flex flex-wrap justify-center items-center gap-4">
-                <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">Or reach out via</span>
+                <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">{dict.contact.reachOutText}</span>
                 <a 
                   href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect%20about%20a%20project." 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                 >
-                  WhatsApp
+                  {dict.contact.whatsappBtn}
                 </a>
               </div>
             </div>
@@ -438,38 +440,38 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left mb-16">
           
           <div className="flex flex-col gap-4">
-            <span className="text-stone-800 mb-2">Explore</span>
-            <Link href="/about" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">About</Link>
-            <Link href="/portfolio" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Portfolio</Link>
-            <Link href="/services" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Services</Link>
-            <Link href="/experiences" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Experiences</Link>
+            <span className="text-stone-800 mb-2">{dict.footer.explore}</span>
+            <Link href="/about" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.nav.about}</Link>
+            <Link href="/portfolio" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.nav.portfolio}</Link>
+            <Link href="/services" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.nav.services}</Link>
+            <Link href="/experiences" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.nav.experiences}</Link>
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="text-stone-800 mb-2">Connect</span>
+            <span className="text-stone-800 mb-2">{dict.footer.connect}</span>
             <a href="https://instagram.com/francesco_valentinuzzi" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">IG: francesco_valentinuzzi</a>
             <a href="https://instagram.com/studio3cime" target="_blank" rel="noreferrer" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">IG: studio3cime</a>
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="text-stone-800 mb-2">Legal</span>
-            <Link href="/privacy" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">Terms of Service</Link>
+            <span className="text-stone-800 mb-2">{dict.footer.legal}</span>
+            <Link href="/privacy" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.footer.privacy}</Link>
+            <Link href="/terms" className="underline underline-offset-4 decoration-1 hover:text-stone-800 transition-colors">{dict.footer.terms}</Link>
           </div>
           
           <div className="flex flex-col gap-4 md:text-right">
-             <span className="text-stone-800 mb-2">Studio</span>
-             <span>Production by Studio3Cime</span>
-             <span>© 2026 Francesco Valentinuzzi</span>
+             <span className="text-stone-800 mb-2">{dict.footer.studio}</span>
+             <span>{dict.footer.production}</span>
+             <span>{dict.footer.copyright}</span>
           </div>
 
         </div>
 
         {/* --- SEO LOCATIONS BLOCK --- */}
         <div className="border-t border-stone-300 pt-12 flex flex-col gap-4 text-center">
-          <span className="text-stone-800">Destinations & Coverage</span>
+          <span className="text-stone-800">{dict.footer.destinationsTitle}</span>
           <span className="text-[8px] md:text-[9px] text-stone-400 leading-loose max-w-5xl mx-auto">
-            BASED IN AVIANO, ITALY — PHOTOGRAPHING DESTINATION WEDDINGS, ELOPEMENTS, AND COMMERCIAL CAMPAIGNS IN THE DOLOMITES, LAKE COMO, TUSCANY, AMALFI COAST, VENICE, ROME, SICILY, SARDINIA, THE SWISS ALPS, AND ACROSS EUROPE. AVAILABLE FOR WORLDWIDE TRAVEL.
+            {dict.footer.destinationsDesc}
           </span>
         </div>
       </footer>
