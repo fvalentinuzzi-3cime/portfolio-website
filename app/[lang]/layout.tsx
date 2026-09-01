@@ -16,6 +16,15 @@ export const metadata: Metadata = {
   title: "Francesco Valentinuzzi | Photographer & Film Director",
   description: "Award-winning photographer and commercial film director based in Northern Italy. Crafting authentic narratives in the Dolomites, Tuscany, and US.",
   keywords: ["Destination Wedding Photographer", "Dolomites Elopement Photographer", "Italy Wedding Photographer", "Commercial Film Director Italy", "Francesco Valentinuzzi", "Studio 3 Cime"],
+  
+  // --- ADDED FAVICON BLOCK ---
+  icons: {
+    icon: "/icon.png", 
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+  // ---------------------------
+
   openGraph: {
     title: "Francesco Valentinuzzi | Photographer & Film Director",
     description: "Crafting authentic narratives for destination weddings, intimate elopements, and commercial brand campaigns.",
