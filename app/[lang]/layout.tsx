@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 import "../globals.css";
 
 const geistSans = Geist({
@@ -59,14 +60,33 @@ export default async function RootLayout({
 }) {
   const resolvedParams = await params;
   
-return (
+  return (
     <html
       lang={resolvedParams.lang}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
+        
+        {/* 2. ADD THIS SCRIPT: The Consent Mode v2 Default State */}
+        <Script id="google-consent" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            // Default everything to denied
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied'
+            });
+          `}
+        </Script>
+
         {children}
-        <GoogleAnalytics gaId="G-640HRVTKP5" /> {/* <-- Add your ID here */}
+        
+        {/* Your existing GA Tag */}
+        <GoogleAnalytics gaId="G-640HRVTKP5" />
       </body>
     </html>
   );

@@ -68,9 +68,19 @@ export default function HomeClient({ dict }: { dict: any }) {
     localStorage.setItem("seenPromo", "true");
   };
 
-  const acceptCookies = () => {
+const acceptCookies = () => {
     setShowCookieBanner(false);
     localStorage.setItem("cookieConsent", "true");
+    
+    // Send the v2 signals directly to Google
+    if (typeof window !== 'undefined') {
+      (window as any).gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
   };
 
   return (
