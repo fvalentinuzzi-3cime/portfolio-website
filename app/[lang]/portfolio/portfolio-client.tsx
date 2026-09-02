@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import { motion, Variants } from "framer-motion";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import { sendGAEvent } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 

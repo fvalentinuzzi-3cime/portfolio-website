@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import { sendGAEvent } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 
@@ -110,6 +111,7 @@ const acceptCookies = () => {
               <div className="flex flex-wrap justify-center items-center gap-6">
                 <a 
                   href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
                 >
                   {dict.promo.emailBtn}
@@ -119,6 +121,7 @@ const acceptCookies = () => {
                   href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
                 >
                   {dict.promo.whatsappBtn}
@@ -394,6 +397,7 @@ const acceptCookies = () => {
             <div className="flex flex-wrap justify-center items-center gap-6 mt-10">
               <a 
                 href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
               >
                 {dict.promo.emailBtn}
@@ -423,6 +427,7 @@ const acceptCookies = () => {
             <div className="flex flex-col items-center gap-8">
               <a 
                 href="mailto:fvalentinuzzi@studio3cime.com?subject=Website%20Inquiry" 
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                 className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
               >
                 {dict.contact.sendEmailBtn}

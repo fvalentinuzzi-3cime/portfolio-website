@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import { motion, Variants } from "framer-motion";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import { sendGAEvent } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400"] });
 
@@ -95,7 +96,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                 <div className="flex flex-wrap items-center gap-4">
                   <a 
                     href="mailto:fvalentinuzzi@studio3cime.com?subject=Elopement%20Inquiry" 
-                    className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.emailBtn}
                   </a>
@@ -104,6 +105,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                     href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20was%20looking%20at%20your%20Elopement%20services%20and%20would%20love%20to%20chat." 
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.whatsappBtn}
@@ -160,6 +162,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                 <div className="flex flex-wrap items-center gap-4">
                   <a 
                     href="mailto:fvalentinuzzi@studio3cime.com?subject=Destination%20Wedding%20Inquiry" 
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.emailBtn}
@@ -169,6 +172,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                     href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20was%20looking%20at%20your%20Destination%20Wedding%20services%20and%20would%20love%20to%20chat." 
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.whatsappBtn}
@@ -209,6 +213,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                 <div className="flex flex-wrap items-center gap-4">
                   <a 
                     href="mailto:fvalentinuzzi@studio3cime.com?subject=Commercial%20Project%20Inquiry" 
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.emailBtn}
@@ -218,6 +223,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                     href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20was%20looking%20at%20your%20Commercial%20services%20and%20would%20love%20to%20discuss%20a%20project." 
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                     className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                   >
                     {dict.promo.whatsappBtn}
@@ -251,6 +257,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
               <div className="flex flex-wrap justify-center items-center gap-4">
                 <a 
                   href="mailto:fvalentinuzzi@studio3cime.com?subject=Couples%20Session%20Inquiry" 
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                   className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                 >
                   {dict.promo.emailBtn}
@@ -260,6 +267,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                   href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20book%20a%20Couples%20Session." 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                   className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                 >
                   {dict.promo.whatsappBtn}
@@ -291,6 +299,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
               <div className="flex flex-wrap justify-center items-center gap-4">
                 <a 
                   href="mailto:fvalentinuzzi@studio3cime.com?subject=Private%20Event%20Inquiry" 
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                   className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                 >
                   {dict.promo.emailBtn}
@@ -300,6 +309,7 @@ export default function ServicesClient({ dict }: { dict: any }) {
                   href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20discuss%20coverage%20for%20a%20Private%20Event." 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                   className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
                 >
                   {dict.promo.whatsappBtn}

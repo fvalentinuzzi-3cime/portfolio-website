@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { sendGAEvent } from '@next/third-parties/google';
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { motion, Variants } from "framer-motion";
@@ -157,6 +158,7 @@ export default function ExperiencesClient({ dict }: { dict: any }) {
             <div className="flex flex-wrap justify-center items-center gap-4">
               <a 
                 href="mailto:fvalentinuzzi@studio3cime.com?subject=Ready%20for%20the%20Experience" 
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
                 className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
               >
                 {dict.promo.emailBtn}
@@ -166,6 +168,7 @@ export default function ExperiencesClient({ dict }: { dict: any }) {
                 href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20am%20ready%20for%20the%20experience%20and%20would%20love%20to%20connect." 
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
                 className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
               >
                 {dict.promo.whatsappBtn}
