@@ -8,13 +8,13 @@
     "closeMenu": "Close Menu"
   },
   "menu": {
-    "description": "Crafting cinematic, authentic narratives for destination weddings, intimate elopements, and commercial brand campaigns."
+    "description": "Authentic narratives for destination weddings, intimate elopements, and commercial brand campaigns."
   },
   "home": {
-    "heroSubtitle": "Cinematic Destination Photographer & Film Director",
+    "heroSubtitle": "Photographer & Film Director",
     "greeting": "Hi, I'm Francesco",
     "aboutP1": "I am an award-winning photographer, film director, and local guide based in Northern Italy.",
-    "aboutP2": "Whether you envision a rugged mountainscape, a sun-drenched beach shoot, or an elegant historical location, I help you design your day. Leveraging my deep local knowledge, I assist couples and brands in discovering unique, off-the-beaten-path spots and securing the region's most breathtaking backdrops for your story."
+    "aboutP2": "Whether you envision a rugged mountainscape, a beach shoot, or an elegant historical location, I help you design your day. I assist couples and brands in discovering unique, off-the-beaten-path spots and securing the region's most breathtaking backdrops for your story."
   },
   "portfolio": {
     "title": "Selected Works",
@@ -25,9 +25,9 @@
   "services": {
     "title": "Services",
     "photoTitle": "Photography",
-    "photoDesc": "From intimate sunrise proposals in the Dolomites to high-end commercial brand campaigns across Italy. My photography blends an editorial aesthetic with raw, authentic emotion. You receive a meticulously curated, high-resolution digital gallery and access to premium print options.",
+    "photoDesc": "From intimate sunrise proposals in the Dolomites to high-end commercial brand campaigns across Italy. My photography blends an editorial aesthetic with raw, authentic emotion. You receive a curated, digital gallery and access to premium print options.",
     "filmTitle": "Filmmaking",
-    "filmDesc": "Award-winning cinematography tailored for cinematic destination wedding films, documentaries, and commercial storytelling. Leveraging my background as a film director, I craft emotion-driven short films that capture the true essence and scale of your narrative."
+    "filmDesc": "Leveraging my background as an award winning film director, I craft emotion-driven short films that capture the true essence and scale of your narrative."
   },
   "experiences": {
     "navTitle": "Experiences",
@@ -53,18 +53,18 @@
     "val3Desc": "Whether your wedding is an elegant historic villa affair, a rustic gathering, or a wild alpine adventure, I am there to adapt to your energy and capture it flawlessly.",
     "filterTitle": "One Last Thing",
     "filterDesc1": "I am not a photographer for everybody. If you are looking for highly traditional, stiffly posed portraits that feel perfectly pristine but lack emotion, we might not be the best fit.",
-    "filterDesc2": "But if you have looked through my galleries and felt a connection to the raw, cinematic philosophy behind what I do, chances are we are going to create something truly extraordinary together. Wedding photography is the legacy of your day. Choose with your heart.",
+    "filterDesc2": "But if you have looked through my galleries and felt a connection to the raw, cinematic philosophy behind what I do, chances are we are going to create something truly extraordinary together. Wedding photography is the legacy of your day.",
     "ctaTitle": "Ready for the experience?",
     "ctaBtn": "Send Me A Message"
   },
   "promo": {
     "close": "Close ✕",
     "eyebrow": "Exclusive 2026 Opportunity",
-    "popupTitle": "The Editorial Rate",
+    "popupTitle": "2026 Autumn rate",
     "popupDesc1": "As I expand my European portfolio, enjoy a",
     "popupDiscount": "50% discount",
     "popupDesc2": "on all collections booked before Dec 31, 2026.",
-    "bannerTitle": "The Editorial Portfolio Rate",
+    "bannerTitle": "The Autumn rate",
     "bannerDesc1": "As I selectively expand my European portfolio for the upcoming season, I am offering an exclusive",
     "bannerDiscount": "50% discount",
     "bannerDesc2": "on all photography and filmmaking collections.",
@@ -112,7 +112,7 @@
   },
   "servicesPage": {
     "introTitle": "Investment & Experience",
-    "introDesc": "Based in Northern Italy, I craft cinematic, authentic narratives across the Dolomites, the Italian coastline, and throughout Europe. Serving an international clientele, I provide a seamless, stress-free experience for English-speaking couples and brands planning from abroad.",
+    "introDesc": "Based in Northern Italy, I craft authentic narratives across the Dolomites, the Italian coastline, and throughout Europe. Serving an international clientele, I provide a seamless, stress-free experience for English-speaking couples and brands planning from abroad.",
     "elopementsEyebrow": "01. Intimate",
     "elopementsTitle": "Destination Elopements",
     "elopementsDesc": "An elopement is the ultimate freedom to celebrate your relationship without the pressure of tradition. Whether you are traveling from abroad to an alpine peak in the Dolomites or a hidden villa in Tuscany, I guide you through location scouting and timeline planning to create a deeply personal, cinematic adventure.",

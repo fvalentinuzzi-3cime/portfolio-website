@@ -8,13 +8,13 @@
     "closeMenu": "Chiudi Menu"
   },
   "menu": {
-    "description": "Realizzo narrazioni cinematografiche e autentiche per matrimoni di destinazione, elopement intimi e campagne pubblicitarie per brand."
+    "description": "Realizzo creazioni autentiche per matrimoni, elopement intimi e campagne pubblicitarie per brand."
   },
   "home": {
-    "heroSubtitle": "Fotografo di Destinazione Cinematografica e Regista",
+    "heroSubtitle": "Fotografo e Regista",
     "greeting": "Ciao, sono Francesco",
     "aboutP1": "Sono un fotografo pluripremiato, regista e guida locale con base nel Nord Italia.",
-    "aboutP2": "Sia che immaginiate un paesaggio di montagna incontaminato, uno shooting in una spiaggia assolata o un'elegante location storica, vi aiuterò a progettare la vostra giornata. Sfruttando la mia profonda conoscenza del territorio, assisto coppie e brand nella scoperta di luoghi unici e fuori dai percorsi più battuti, assicurando gli scenari più mozzafiato per la vostra storia."
+    "aboutP2": "Sia che immaginiate un paesaggio di montagna, uno shooting in una spiaggia assolata o un'elegante location storica, vi aiuterò a progettare la vostra giornata. Sfruttando la mia profonda conoscenza del territorio, assisto coppie e brand nella scoperta di luoghi unici e fuori dai percorsi più battuti, assicurando gli scenari più mozzafiato per la vostra storia."
   },
   "portfolio": {
     "title": "Lavori Selezionati",
@@ -27,13 +27,13 @@
     "photoTitle": "Fotografia",
     "photoDesc": "Dalle intime proposte di matrimonio all'alba sulle Dolomiti alle campagne pubblicitarie di alto livello in tutta Italia. La mia fotografia fonde un'estetica editoriale con emozioni crude e autentiche. Riceverete una galleria digitale ad alta risoluzione curata meticolosamente e l'accesso a opzioni di stampa premium.",
     "filmTitle": "Filmmaking",
-    "filmDesc": "Cinematografia pluripremiata pensata per film di matrimoni di destinazione, documentari e storytelling commerciale. Sfruttando la mia esperienza come regista, creo cortometraggi ricchi di emozione che catturano la vera essenza e la grandezza della vostra narrazione."
+    "filmDesc": "Cinematografia pensata per film di matrimoni, documentari e storytelling commerciale. Sfruttando la mia esperienza come regista, creo cortometraggi ricchi di emozione che catturano la vera essenza e la grandezza della vostra narrazione."
   },
   "experiences": {
     "navTitle": "Esperienze",
     "backHome": "← Torna alla Home",
     "introEyebrow": "Cosa Aspettarsi",
-    "introTitle": "Spontaneo, Cinematografico e Autentico.",
+    "introTitle": "Spontaneo e Autentico.",
     "introDesc": "Lavorare con me va ben oltre lo scattare una bella fotografia. Si tratta di creare uno spazio in cui possiate sentirvi completamente a vostro agio, liberi e voi stessi.",
     "beforeEyebrow": "Prima del Servizio",
     "beforeTitle": "La Connessione è Tutto",
@@ -53,20 +53,20 @@
     "val3Desc": "Che il vostro matrimonio sia un evento elegante in una villa storica, una festa rustica o una selvaggia avventura alpina, sono lì per adattarmi alla vostra energia e catturarla in modo impeccabile.",
     "filterTitle": "Un'Ultima Cosa",
     "filterDesc1": "Non sono un fotografo per tutti. Se state cercando ritratti altamente tradizionali e in posa, perfetti ma privi di emozione, potremmo non essere la scelta giusta l'uno per l'altro.",
-    "filterDesc2": "Ma se avete guardato le mie gallerie e avete sentito una connessione con la filosofia cruda e cinematografica che c'è dietro quello che faccio, è molto probabile che creeremo insieme qualcosa di veramente straordinario. La fotografia di matrimonio è l'eredità del vostro giorno. Scegliete con il cuore.",
+    "filterDesc2": "Ma se avete guardato le mie gallerie e avete sentito una connessione con la filosofia cruda e cinematografica che c'è dietro quello che faccio, è molto probabile che creeremo insieme qualcosa di veramente straordinario. La fotografia di matrimonio è l'eredità del vostro giorno.",
     "ctaTitle": "Pronti per l'esperienza?",
     "ctaBtn": "Inviatemi un Messaggio"
   },
   "promo": {
     "close": "Chiudi ✕",
     "eyebrow": "Opportunità Esclusiva 2026",
-    "popupTitle": "La Tariffa Editoriale",
-    "popupDesc1": "Mentre espando il mio portfolio europeo, approfitta di una",
-    "popupDiscount": "riduzione del 50%",
+    "popupTitle": "La autunnale 2026",
+    "popupDesc1": "Mentre espando il mio portfolio europeo, approfitta dello",
+    "popupDiscount": "sconto del 50%",
     "popupDesc2": "su tutte le collezioni prenotate entro il 31 Dicembre 2026.",
-    "bannerTitle": "La Tariffa Editoriale Portfolio",
+    "bannerTitle": "La autunnale",
     "bannerDesc1": "Per espandere in modo mirato il mio portfolio europeo per la prossima stagione, offro un'esclusiva",
-    "bannerDiscount": "riduzione del 50%",
+    "bannerDiscount": "sconto del 50%",
     "bannerDesc2": "su tutti i servizi di fotografia e videografia.",
     "bannerDesc3": "Questa tariffa di lancio si applica a qualsiasi elopement, matrimonio o progetto commerciale confermato prima del",
     "bannerDate": "31 Dicembre 2026",
