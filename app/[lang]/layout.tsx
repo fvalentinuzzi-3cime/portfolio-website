@@ -19,13 +19,11 @@ export const metadata: Metadata = {
   description: "Award-winning photographer and commercial film director based in Northern Italy. Crafting authentic narratives in the Dolomites, Tuscany, and US.",
   keywords: ["Destination Wedding Photographer", "Dolomites Elopement Photographer", "Italy Wedding Photographer", "Commercial Film Director Italy", "Francesco Valentinuzzi", "Studio 3 Cime"],
   
-  // --- ADDED FAVICON BLOCK ---
   icons: {
     icon: "/portfolio_logo.png", 
     shortcut: "/portfolio_logo.png",
     apple: "/portfolio_logo.png",
   },
-  // ---------------------------
 
   openGraph: {
     title: "Francesco Valentinuzzi | Photographer & Film Director",
@@ -67,25 +65,23 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         
-        {/* 2. ADD THIS SCRIPT: The Consent Mode v2 Default State */}
+        {/* CHANGED: analytics_storage is now 'granted' so you can track events! */}
         <Script id="google-consent" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             
-            // Default everything to denied
             gtag('consent', 'default', {
               'ad_storage': 'denied',
               'ad_user_data': 'denied',
               'ad_personalization': 'denied',
-              'analytics_storage': 'denied'
+              'analytics_storage': 'granted' 
             });
           `}
         </Script>
 
         {children}
         
-        {/* Your existing GA Tag */}
         <GoogleAnalytics gaId="G-640HRVTKP5" />
       </body>
     </html>
