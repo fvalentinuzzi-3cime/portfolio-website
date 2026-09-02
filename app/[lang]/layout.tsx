@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   
   // --- ADDED FAVICON BLOCK ---
   icons: {
-    icon: "/icon.png", 
-    shortcut: "/icon.png",
-    apple: "/icon.png",
+    icon: "/portfolio_logo.png", 
+    shortcut: "/portfolio_logo.png",
+    apple: "/portfolio_logo.png",
   },
   // ---------------------------
 
