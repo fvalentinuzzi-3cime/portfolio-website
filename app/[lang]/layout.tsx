@@ -77,6 +77,9 @@ export default async function RootLayout({
               'ad_personalization': 'denied',
               'analytics_storage': 'granted' 
             });
+
+            // Connects your Google Ads account
+            gtag('config', 'AW-18422722902');
           `}
         </Script>
 
