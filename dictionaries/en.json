@@ -197,5 +197,17 @@
     "sec2Desc": "Our website uses essential cookies to ensure proper functionality and improve user experience. These cookies do not store personally identifiable information unless you explicitly provide it to us.",
     "sec3Title": "3. Data Sharing and GDPR Rights",
     "sec3Desc": "We respect your privacy and do not sell or rent your personal data to third parties. Under the General Data Protection Regulation (GDPR), you have the right to access, rectify, or erase your personal data at any time. To exercise these rights, please contact us at fvalentinuzzi@studio3cime.com."
+  },
+  "tours": {
+    "sectionEyebrow": "Masterclasses",
+    "sectionTitle": "Private Expeditions & Tours",
+    "sectionDesc": "Hands-on photography and filmmaking experiences designed to elevate your craft while exploring Italy's most iconic landscapes. Dates are flexible and available upon inquiry.",
+    "dolomitesTitle": "The Dolomites Expedition",
+    "dolomitesLocation": "Cortina, Misurina & Tre Cime",
+    "dolomitesDesc": "A luxury, hands-on masterclass set against the dramatic peaks of Northern Italy. We will cover the core mechanics of visual storytelling—from camera basics and landscape composition to event filmmaking and drone operation. Designed to give you the practical tools to create cinematic visuals in a breathtaking environment.",
+    "veniceTitle": "Discovering Venice Through the Lens",
+    "veniceLocation": "Venice, Italy",
+    "veniceDesc": "An immersive photographic tour through the labyrinthine canals and historic squares of the Floating City. Discover hidden corners while mastering natural lighting, street photography, and architectural composition to capture the authentic, fading magic of Venice.",
+    "inquiryBtn": "Inquire for Details"
   }
 }

@@ -142,6 +142,86 @@ export default function ExperiencesClient({ dict }: { dict: any }) {
           </p>
         </motion.section>
 
+        {/* --- PRIVATE TOURS & MASTERCLASSES --- */}
+        <motion.section 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="max-w-6xl mx-auto px-6 mt-32 mb-16"
+        >
+          {/* Header */}
+          <div className="mb-16 text-center md:text-left">
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-400 block mb-4">
+              {dict.tours.sectionEyebrow}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light text-stone-800 mb-6">
+              {dict.tours.sectionTitle}
+            </h2>
+            <p className="text-base text-stone-600 font-light leading-relaxed max-w-2xl">
+              {dict.tours.sectionDesc}
+            </p>
+          </div>
+
+          {/* Side-by-Side Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            
+            {/* Tour 1: Dolomites */}
+            <div className="flex flex-col group">
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-8 shadow-sm">
+                  {/* Change this src to your Dolomites image */}
+                  <Image 
+                    src="/dolomites-clouds.jpeg" 
+                    alt="Dolomites Masterclass" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+              </div>
+              <h3 className="text-2xl font-light text-stone-800 mb-2">{dict.tours.dolomitesTitle}</h3>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-4 block">
+                {dict.tours.dolomitesLocation}
+              </span>
+              <p className="text-sm text-stone-600 font-light leading-relaxed mb-8 flex-grow">
+                {dict.tours.dolomitesDesc}
+              </p>
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=Inquiry:%20Dolomites%20Expedition"
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'tour_dolomites' })}
+                className="self-start text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1 hover:text-stone-500 hover:border-stone-500 transition-colors"
+              >
+                {dict.tours.inquiryBtn}
+              </a>
+            </div>
+
+            {/* Tour 2: Venice */}
+            <div className="flex flex-col group md:mt-16">
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-8 shadow-sm">
+                  {/* Change this src to a Venice image */}
+                  <Image 
+                    src="/hero.jpeg" 
+                    alt="Venice Masterclass" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+              </div>
+              <h3 className="text-2xl font-light text-stone-800 mb-2">{dict.tours.veniceTitle}</h3>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-4 block">
+                {dict.tours.veniceLocation}
+              </span>
+              <p className="text-sm text-stone-600 font-light leading-relaxed mb-8 flex-grow">
+                {dict.tours.veniceDesc}
+              </p>
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=Inquiry:%20Venice%20Narrative%20Tour"
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'tour_venice' })}
+                className="self-start text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-1 hover:text-stone-500 hover:border-stone-500 transition-colors"
+              >
+                {dict.tours.inquiryBtn}
+              </a>
+            </div>
+
+          </div>
+        </motion.section>
+
         {/* Call to Action */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}

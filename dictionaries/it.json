@@ -197,5 +197,17 @@
     "sec2Desc": "Il nostro sito web utilizza cookie essenziali per garantire il corretto funzionamento e migliorare l'esperienza dell'utente. Questi cookie non memorizzano informazioni di identificazione personale a meno che tu non ce le fornisca esplicitamente.",
     "sec3Title": "3. Condivisione dei Dati e Diritti GDPR",
     "sec3Desc": "Rispettiamo la tua privacy e non vendiamo o affittiamo i tuoi dati personali a terzi. Ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR), hai il diritto di accedere, rettificare o cancellare i tuoi dati personali in qualsiasi momento. Per esercitare questi diritti, ti preghiamo di contattarci a fvalentinuzzi@studio3cime.com."
+  },
+  "tours": {
+    "sectionEyebrow": "Masterclass",
+    "sectionTitle": "Spedizioni Private e Tour",
+    "sectionDesc": "Esperienze pratiche di fotografia e filmmaking progettate per elevare la tua tecnica mentre esplori i paesaggi più iconici d'Italia. Le date sono flessibili e disponibili su richiesta.",
+    "dolomitesTitle": "La Spedizione sulle Dolomiti",
+    "dolomitesLocation": "Cortina, Misurina e Tre Cime",
+    "dolomitesDesc": "Una masterclass pratica e di lusso tra le spettacolari vette del Nord Italia. Esploreremo i fondamenti dello storytelling visivo: dalle basi della fotocamera e la composizione paesaggistica, fino al filmmaking per eventi e l'uso del drone. Progettato per fornirti gli strumenti pratici per creare immagini cinematografiche in un ambiente mozzafiato.",
+    "veniceTitle": "Scoprire Venezia Attraverso l'Obiettivo",
+    "veniceLocation": "Venezia, Italia",
+    "veniceDesc": "Un tour fotografico immersivo tra i labirintici canali e le piazze storiche della Serenissima. Scopri angoli nascosti mentre perfezioni l'uso della luce naturale, la street photography e la composizione architettonica per catturare l'autentica magia di Venezia.",
+    "inquiryBtn": "Richiedi Informazioni"
   }
 }
