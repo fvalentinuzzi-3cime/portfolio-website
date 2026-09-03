@@ -362,16 +362,29 @@ const acceptCookies = () => {
               </p>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* --- ROW 1 --- */}
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+               <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
             </div>
+            {/* Middle image pushed down slightly for an editorial staggered look */}
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
-               <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+               <Image src="/redhair-girl.jpeg" alt="Editorial Portrait" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
             </div>
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
-               <Image src="/Tuscany.jpeg" alt="Tuscany Landscape" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+               <Image src="/Tuscany.jpeg" alt="Tuscany Landscape" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+            </div>
+
+            {/* --- ROW 2 --- */}
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
+               <Image src="/antelope-canyon.jpeg" alt="Antelope Canyon" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+            </div>
+            {/* Keeping the md:mt-16 here continues the staggered layout down the page */}
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm md:mt-16">
+               <Image src="/climbing-in-colorado.jpeg" alt="Climber at Garden of the Gods" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+            </div>
+            <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
+               <Image src="/horses-iceland.jpeg" alt="Horses in Iceland playing" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
             </div>
           </div>
         </section>
