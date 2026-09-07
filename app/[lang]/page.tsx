@@ -1,5 +1,20 @@
 import { getDictionary } from './../getDictionary';
 import HomeClient from './home-client';
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  
+  return {
+    alternates: {
+      canonical: `/${resolvedParams.lang}`,
+      languages: {
+        'en': '/en',
+        'it': '/it',
+      },
+    },
+  };
+}
 
 export default async function Page({ 
   params 

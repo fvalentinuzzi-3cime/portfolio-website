@@ -15,9 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.francescovalentinuzzi.com"),
   title: "Francesco Valentinuzzi | Photographer & Film Director",
-  description: "Award-winning photographer and commercial film director based in Northern Italy. Crafting authentic narratives in the Dolomites, Tuscany, and US.",
-  keywords: ["Destination Wedding Photographer", "Dolomites Elopement Photographer", "Italy Wedding Photographer", "Commercial Film Director Italy", "Francesco Valentinuzzi", "Studio 3 Cime"],
+  description: "Award-winning photographer and commercial film director based in Northern Italy. Crafting authentic narratives in Italy and US.",
+  keywords: [" Wedding Photographer", "Dolomites Elopement Photographer", "Italy Wedding Photographer", "Commercial Film Director Italy", "Francesco Valentinuzzi", "Studio 3 Cime", "Best couple Photographer Venice", "Best couple Photographer Dolomites", "Best couple Photographer Tuscany", "Best couple Photographer Italy", "Best couple Photographer US", "Best couple Photographer Europe", "Best couple Photographer", "Sports Photographer", "Adventure Photographer", "Travel Photographer", "Destination Wedding Photographer", "Wedding Videographer", "Commercial Videographer", "Commercial Film Director", "Italy Wedding Videographer", "Italy Wedding Videography", "Italy Wedding Films", "Italy Wedding Cinematography", "Italy Wedding Cinematographer"],
   
   icons: {
     icon: "/portfolio_logo.png", 
