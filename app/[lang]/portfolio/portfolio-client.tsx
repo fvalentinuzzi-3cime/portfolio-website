@@ -89,6 +89,8 @@ export default function PortfolioClient({ dict }: { dict: any }) {
           </motion.div>
 
           <div className="max-w-7xl mx-auto px-6">
+            
+            {/* ROW 1 */}
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
                 <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
@@ -103,6 +105,28 @@ export default function PortfolioClient({ dict }: { dict: any }) {
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 ml-2 text-right md:text-left">{dict.portfolioPage.chap1Subtitle}</p>
               </motion.div>
             </div>
+
+            {/* ROW 2 (NEW) */}
+            <div className="flex flex-col md:flex-row gap-12 items-center mt-12 md:-mt-16">
+              
+              {/* Left Image - Staggered down to interlock with Row 1 */}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
+                  {/* Change this src to your 3rd image */}
+                  <Image src="/proposal-venice.jpeg" alt="Proposal in Venice at sunset" fill className="object-cover" />
+                </div>
+              </motion.div>
+
+              {/* Right Image - Sits higher up */}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
+                <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
+                  {/* Change this src to your 4th image */}
+                  <Image src="/kevin-couple.jpeg" alt="Joyful couple looking at each other in Venice" fill className="object-cover" />
+                </div>
+              </motion.div>
+
+            </div>
+
           </div>
         </section>
 
