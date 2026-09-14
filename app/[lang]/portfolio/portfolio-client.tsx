@@ -53,7 +53,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
         
       </nav>
 
-      <main className="pb-32">
+      <main className="pb-16">
         
         {/* 1. Main Portfolio Intro Image */}
         <motion.section 
@@ -73,9 +73,30 @@ export default function PortfolioClient({ dict }: { dict: any }) {
           <h2 className="text-3xl md:text-5xl font-light text-stone-800 leading-tight mb-8">
             {dict.portfolioPage.introTitle}
           </h2>
-          <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed mb-12">
             {dict.portfolioPage.introDesc}
           </p>
+          
+          {/* 🚨 NEW: CTA BUTTONS UNDER INTRO */}
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            <a 
+              href="mailto:fvalentinuzzi@studio3cime.com?subject=Portfolio%20Inquiry" 
+              onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1 hover:text-stone-500 hover:border-stone-500 transition-colors"
+            >
+              Email
+            </a>
+            <span className="text-stone-400 font-light">/</span>
+            <a 
+              href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20am%20looking%20at%20your%20portfolio%20and%20would%20love%20to%20connect." 
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b-2 border-stone-800 pb-1 hover:text-stone-500 hover:border-stone-500 transition-colors"
+            >
+              WhatsApp
+            </a>
+          </div>
         </motion.section>
 
         {/* =========================================
@@ -96,7 +117,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
           {/* 2-Image Staggered Grid */}
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
             
-            {/* 🚨 1. HORIZONTAL IMAGE (aspect-[3/2]) */}
+            {/* 1. HORIZONTAL IMAGE (aspect-[3/2]) */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
               <div className="w-full aspect-[3/2] bg-stone-300 relative overflow-hidden mb-6 shadow-md hover:scale-[1.02] transition-transform duration-700 ease-out">
                 <Image 
@@ -111,7 +132,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
               </p>
             </motion.div>
 
-            {/* 🚨 2. VERTICAL IMAGE (aspect-[4/5]) - Pushed down slightly for editorial look */}
+            {/* 2. VERTICAL IMAGE (aspect-[4/5]) - Pushed down slightly for editorial look */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="md:mt-32">
               <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-6 shadow-md hover:scale-[1.02] transition-transform duration-700 ease-out">
                 <Image 
@@ -157,7 +178,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
               </motion.div>
             </div>
 
-            {/* ROW 2 (NEW) */}
+            {/* ROW 2 */}
             <div className="flex flex-col md:flex-row gap-12 items-center mt-12 md:-mt-16">
               
               {/* Left Image - Staggered down to interlock with Row 1 */}
@@ -216,7 +237,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
         {/* =========================================
             CHAPTER IV: COMMERCIAL & ACTION
         ========================================= */}
-        <section className="mb-20">
+        <section className="mb-32">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter IV</span>
             <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap3Title}</h2>
@@ -237,6 +258,42 @@ export default function PortfolioClient({ dict }: { dict: any }) {
               </motion.div>
             </div>
           </div>
+        </section>
+
+        {/* 🚨 NEW: FINAL CTA BLOCK (End of Portfolio) */}
+        <section className="py-20 md:py-32 px-6 border-t border-stone-300">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="max-w-xl mx-auto text-center">
+            
+            <h2 className="text-3xl md:text-4xl mb-6 font-light text-stone-800">
+              Let&apos;s create together
+            </h2>
+            <p className="text-stone-600 mb-12 font-light text-sm leading-relaxed">
+              Have a vision in mind? Reach out to discuss dates, locations, and how we can bring your story to life.
+            </p>
+            
+            <div className="flex flex-col items-center gap-8">
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=Portfolio%20Inquiry" 
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
+                className="inline-block px-12 py-4 border border-stone-800 text-stone-800 uppercase font-bold tracking-[0.2em] text-[10px] hover:bg-stone-800 hover:text-[#E9E8E6] transition-colors duration-500"
+              >
+                Send an Email
+              </a>
+
+              <div className="flex flex-wrap justify-center items-center gap-4">
+                <span className="text-[9px] uppercase tracking-[0.2em] text-stone-500">Or reach out directly</span>
+                <a 
+                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect%20about%20a%20project." 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-800 hover:text-stone-500 transition-colors border-b-2 border-stone-800 hover:border-stone-500 pb-1"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+          </motion.div>
         </section>
 
       </main>
