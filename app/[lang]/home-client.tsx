@@ -279,7 +279,7 @@ const acceptCookies = () => {
         <section className="relative w-full min-h-[85vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden mb-24 md:mb-40">
           <Image 
             src="/hero.jpeg" 
-            alt="Cinematic destination wedding in the Dolomites" 
+            alt="Venice at sunset with gondolas in the foreground" 
             fill 
             priority 
             quality={100}
@@ -320,6 +320,19 @@ const acceptCookies = () => {
             <h2 className="text-4xl mb-4 font-light text-stone-800">{dict.portfolio.title}</h2>
             <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">{dict.portfolio.subtitle}</p>
           </div>
+          
+          {/* 🚨 MOVED: 3rd Vertical Picture for Weddings (Now centered on top) */}
+          <div className="flex justify-center mb-16 md:mb-24">
+            <Link href="/portfolio" className="group cursor-pointer block w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-center">
+              <div className="relative aspect-[3/4] bg-stone-300 mb-6 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02] shadow-sm">
+                <Image src="/weddings/smiling-bride-wearing-wedding-dress.jpeg" alt="Professional photographer capturing a smiling bride in a wedding dress in Italy" fill className="object-cover" />
+              </div>
+              <h3 className="text-3xl mb-2 font-light text-stone-800">
+                Weddings
+              </h3>
+            </Link>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             <Link href="/portfolio" className="group cursor-pointer block">
               <div className="relative aspect-[3/4] bg-stone-300 mb-8 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
@@ -334,6 +347,7 @@ const acceptCookies = () => {
               <h3 className="text-3xl mb-3 font-light text-stone-800">{dict.portfolio.commercial}</h3>
             </Link>
           </div>
+
         </section>
 
         {/* --- SERVICES --- */}
