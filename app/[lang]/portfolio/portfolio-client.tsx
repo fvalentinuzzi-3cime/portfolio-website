@@ -19,7 +19,7 @@ export default function PortfolioClient({ dict }: { dict: any }) {
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 ${inter.className}`}>
       
-{/* Minimal Navbar */}
+      {/* Minimal Navbar */}
       <nav className="flex justify-between items-center py-10 px-8 md:px-12 lg:px-24 sticky top-0 z-50 bg-[#E9E8E6]/90 backdrop-blur-sm">
         
         {/* LEFT SIDE: Back Home (and Desktop Switcher) */}
@@ -79,11 +79,62 @@ export default function PortfolioClient({ dict }: { dict: any }) {
         </motion.section>
 
         {/* =========================================
-            CHAPTER I: ELOPEMENTS & WEDDINGS 
+            CHAPTER I: WEDDINGS (NEW FIRST CHAPTER)
+        ========================================= */}
+        <section className="mb-32 md:mb-48 border-b border-stone-300 pb-20 md:pb-32">
+          
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">
+              Chapter I
+            </span>
+            <h2 className="text-3xl md:text-4xl font-light text-stone-800">
+              Weddings
+            </h2>
+            <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
+          </motion.div>
+
+          {/* 2-Image Staggered Grid */}
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+            
+            {/* 🚨 1. HORIZONTAL IMAGE (aspect-[3/2]) */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
+              <div className="w-full aspect-[3/2] bg-stone-300 relative overflow-hidden mb-6 shadow-md hover:scale-[1.02] transition-transform duration-700 ease-out">
+                <Image 
+                  src="/weddings/kissing-married-couple.jpeg" 
+                  alt="Kissing married couple in Italy" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 text-center md:text-left">
+                Your story
+              </p>
+            </motion.div>
+
+            {/* 🚨 2. VERTICAL IMAGE (aspect-[4/5]) - Pushed down slightly for editorial look */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="md:mt-32">
+              <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-6 shadow-md hover:scale-[1.02] transition-transform duration-700 ease-out">
+                <Image 
+                  src="/weddings/hugging-married-couple-italy-sunset.jpeg" 
+                  alt="Hugging married couple in Italy at sunset" 
+                  fill 
+                  className="object-cover" 
+                />
+              </div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 text-center md:text-right">
+                Details & Emotion
+              </p>
+            </motion.div>
+
+          </div>
+        </section>
+
+        {/* =========================================
+            CHAPTER II: ELOPEMENTS
         ========================================= */}
         <section className="mb-40">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap1Eyebrow}</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter II</span>
             <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap1Title}</h2>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
           </motion.div>
@@ -112,7 +163,6 @@ export default function PortfolioClient({ dict }: { dict: any }) {
               {/* Left Image - Staggered down to interlock with Row 1 */}
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2 md:mt-32">
                 <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
-                  {/* Change this src to your 3rd image */}
                   <Image src="/proposal-venice.jpeg" alt="Proposal in Venice at sunset" fill className="object-cover" />
                 </div>
               </motion.div>
@@ -120,7 +170,6 @@ export default function PortfolioClient({ dict }: { dict: any }) {
               {/* Right Image - Sits higher up */}
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="w-full md:w-1/2">
                 <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden mb-4 shadow-sm">
-                  {/* Change this src to your 4th image */}
                   <Image src="/kevin-couple.jpeg" alt="Joyful couple looking at each other in Venice" fill className="object-cover" />
                 </div>
               </motion.div>
@@ -131,11 +180,11 @@ export default function PortfolioClient({ dict }: { dict: any }) {
         </section>
 
         {/* =========================================
-            CHAPTER II: LANDSCAPES & PLACES
+            CHAPTER III: LANDSCAPES & PLACES
         ========================================= */}
         <section className="mb-40 bg-stone-200/50 py-32 border-y border-stone-300">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap2Eyebrow}</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter III</span>
             <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap2Title}</h2>
             <p className="text-sm text-stone-500 font-light mt-4">{dict.portfolioPage.chap2Subtitle1}</p>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
@@ -165,11 +214,11 @@ export default function PortfolioClient({ dict }: { dict: any }) {
         </section>
 
         {/* =========================================
-            CHAPTER III: COMMERCIAL & ACTION
+            CHAPTER IV: COMMERCIAL & ACTION
         ========================================= */}
         <section className="mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-20 px-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">{dict.portfolioPage.chap3Eyebrow}</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Chapter IV</span>
             <h2 className="text-3xl md:text-4xl font-light text-stone-800">{dict.portfolioPage.chap3Title}</h2>
             <div className="w-px h-12 bg-stone-400 mx-auto mt-8"></div>
           </motion.div>
