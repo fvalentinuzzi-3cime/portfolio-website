@@ -302,6 +302,32 @@ const acceptCookies = () => {
             >
               {dict.home.heroSubtitle}
             </motion.p>
+            
+            {/* 🚨 NEW: HERO CTA BUTTONS 🚨 */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
+              className="flex flex-wrap justify-center items-center gap-6 mt-8"
+            >
+              <a 
+                href="mailto:fvalentinuzzi@studio3cime.com?subject=Website%20Inquiry" 
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
+                className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6]/50 pb-1 hover:text-stone-300 hover:border-stone-300 transition-colors"
+              >
+                {dict.promo.emailBtn}
+              </a>
+              <span className="text-[#E9E8E6]/50 font-light text-xs">/</span>
+              <a 
+                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20connect%20about%20a%20project." 
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
+                className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6]/50 pb-1 hover:text-stone-300 hover:border-stone-300 transition-colors"
+              >
+                {dict.promo.whatsappBtn}
+              </a>
+            </motion.div>
           </div>
         </section>
 
