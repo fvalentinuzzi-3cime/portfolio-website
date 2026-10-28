@@ -106,7 +106,7 @@ export default function HomeClient({ dict }: { dict: any }) {
               <div className="md:col-span-5 flex justify-center mt-4 md:mt-0">
                 <div className="w-48 sm:w-56 md:w-full aspect-[2/3] bg-stone-900 relative overflow-hidden shadow-xl border border-stone-700">
                   <Image 
-                    src="/3000-miles-poster.jpg" 
+                    src="/3000-miles-official-poster.jpeg" 
                     alt="3000 Miles Official Film Poster" 
                     fill 
                     className="object-cover" 
@@ -117,7 +117,7 @@ export default function HomeClient({ dict }: { dict: any }) {
               {/* Pop-up Text & CTAs (Right Column on Desktop) */}
               <div className="md:col-span-7 text-center md:text-left">
                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-3 block">
-                  Currently in Production • Feature Documentary
+                  Currently in Production • Documentary
                 </span>
                 <h3 className="text-3xl md:text-4xl font-light mb-4">3000 Miles</h3>
                 <p className="text-xs md:text-sm text-stone-300 font-light leading-relaxed mb-8">
@@ -660,7 +660,7 @@ export default function HomeClient({ dict }: { dict: any }) {
               <p className="text-sm md:text-base text-stone-300 font-light leading-relaxed mb-10">
                 The extraordinary, emotional true story of <strong className="text-white font-medium">Jason &amp; Nikki Doyle</strong> running across the United States on foot. An inspirational, unfiltered journey to find purpose and defy every physical and mental challenge along the way.
               </p>
-              
+
               
               <div className="flex flex-wrap justify-center md:justify-start items-center gap-6">
                 <a 
