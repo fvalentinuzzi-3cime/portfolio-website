@@ -661,6 +661,7 @@ export default function HomeClient({ dict }: { dict: any }) {
                 The extraordinary, emotional true story of <strong className="text-white font-medium">Jason &amp; Nikki Doyle</strong> running across the United States on foot. An inspirational, unfiltered journey to find purpose and defy every physical and mental challenge along the way.
               </p>
               
+              
               <div className="flex flex-wrap justify-center md:justify-start items-center gap-6">
                 <a 
                   href="https://www.studio3cime.com/3000-miles" 
