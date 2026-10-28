@@ -37,7 +37,7 @@ export default function HomeClient({ dict }: { dict: any }) {
     window.addEventListener("scroll", handleScroll);
 
     // Show promo popup after 4 seconds IF they haven't closed it before
-    const hasSeenPromo = localStorage.getItem("seenPromo");
+    const hasSeenPromo = localStorage.getItem("seen3000MilesPromo");
     if (!hasSeenPromo) {
       const timer = setTimeout(() => setShowPromoPopup(true), 4000);
       return () => {
@@ -66,10 +66,10 @@ export default function HomeClient({ dict }: { dict: any }) {
 
   const closePromo = () => {
     setShowPromoPopup(false);
-    localStorage.setItem("seenPromo", "true");
+    localStorage.setItem("seen3000MilesPromo", "true");
   };
 
-const acceptCookies = () => {
+  const acceptCookies = () => {
     setShowCookieBanner(false);
     localStorage.setItem("cookieConsent", "true");
     
@@ -87,7 +87,7 @@ const acceptCookies = () => {
   return (
     <div className={`min-h-screen bg-[#E9E8E6] text-stone-800 relative ${inter.className}`}>
       
-      {/* --- MINIMAL PROMO POP-UP --- */}
+      {/* --- 3000 MILES FILM POP-UP WITH VERTICAL POSTER --- */}
       <AnimatePresence>
         {showPromoPopup && (
           <motion.div 
@@ -95,38 +95,58 @@ const acceptCookies = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-stone-900/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6 bg-stone-900/60 backdrop-blur-sm overflow-y-auto"
           >
-            <div className="bg-stone-800 text-[#E9E8E6] p-10 md:p-16 max-w-lg w-full text-center relative shadow-2xl">
-              <button onClick={closePromo} className="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors">
-                <span className="text-[10px] uppercase tracking-widest font-bold">{dict.promo.close}</span>
+            <div className="bg-stone-800 text-[#E9E8E6] p-8 md:p-12 max-w-3xl w-full relative shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
+              <button onClick={closePromo} className="absolute top-5 right-6 text-stone-400 hover:text-white transition-colors z-10">
+                <span className="text-[10px] uppercase tracking-widest font-bold">{dict.promo?.close || "Close"}</span>
               </button>
               
-              <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block mt-4">{dict.promo.eyebrow}</span>
-              <h3 className="text-3xl font-light mb-4">{dict.promo.popupTitle}</h3>
-              <p className="text-xs text-stone-300 font-light leading-relaxed mb-8">
-                {dict.promo.popupDesc1} <strong>{dict.promo.popupDiscount}</strong> {dict.promo.popupDesc2}
-              </p>
-              
-              <div className="flex flex-wrap justify-center items-center gap-6">
-                <a 
-                  href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
-                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
-                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
-                >
-                  {dict.promo.emailBtn}
-                </a>
-                <span className="text-stone-600 font-light">/</span>
-                <a 
-                  href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'whatsapp' })}
-                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] border-b border-[#E9E8E6] pb-1 hover:text-stone-400 hover:border-stone-400 transition-colors"
-                >
-                  {dict.promo.whatsappBtn}
-                </a>
+              {/* 🚨 POP-UP VERTICAL POSTER (Left Column on Desktop) */}
+              <div className="md:col-span-5 flex justify-center mt-4 md:mt-0">
+                <div className="w-48 sm:w-56 md:w-full aspect-[2/3] bg-stone-900 relative overflow-hidden shadow-xl border border-stone-700">
+                  <Image 
+                    src="/3000-miles-poster.jpg" 
+                    alt="3000 Miles Official Film Poster" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
               </div>
+
+              {/* Pop-up Text & CTAs (Right Column on Desktop) */}
+              <div className="md:col-span-7 text-center md:text-left">
+                <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-3 block">
+                  Currently in Production • Feature Documentary
+                </span>
+                <h3 className="text-3xl md:text-4xl font-light mb-4">3000 Miles</h3>
+                <p className="text-xs md:text-sm text-stone-300 font-light leading-relaxed mb-8">
+                  I am currently producing <strong>3000 Miles</strong>—the raw, emotional story of Jason &amp; Nikki Doyle running across the US on foot to find purpose and defy every challenge. Subscribe below for exclusive behind-the-scenes access and premiere updates.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
+                  {/* OPTION 1: MailerLite / Waitlist Link */}
+                  <a 
+                    href="https://www.studio3cime.com/3000-miles" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: '3000_miles_subscribe' })}
+                    className="w-full sm:w-auto text-center px-7 py-3.5 bg-[#E9E8E6] text-stone-900 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-300 transition-colors"
+                  >
+                    Subscribe / Join Waitlist
+                  </a>
+
+                  {/* OPTION 2: Contact Me */}
+                  <a 
+                    href="mailto:fvalentinuzzi@studio3cime.com?subject=3000%20Miles%20Film%20Inquiry" 
+                    onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email_3000_miles' })}
+                    className="w-full sm:w-auto text-center px-7 py-3.5 border border-[#E9E8E6]/40 text-[#E9E8E6] text-[10px] font-bold uppercase tracking-[0.2em] hover:border-[#E9E8E6] hover:bg-stone-700/50 transition-colors"
+                  >
+                    Contact Me
+                  </a>
+                </div>
+              </div>
+
             </div>
           </motion.div>
         )}
@@ -294,16 +314,18 @@ const acceptCookies = () => {
               className="text-4xl md:text-7xl font-light text-[#E9E8E6] tracking-wide mb-6"
             >
             </motion.h1>
+            
+            {/* MULTI-DISCIPLINARY SUBTITLE */}
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-              className="text-[9px] md:text-xl font-bold uppercase tracking-[0.3em] text-[#E9E8E6]/90"
+              className="text-[9px] md:text-base font-bold uppercase tracking-[0.25em] text-[#E9E8E6]/90 max-w-4xl mx-auto leading-loose"
             >
-              {dict.home.heroSubtitle}
+              Photographer • Film Director • Content Creator • Digital Strategist
             </motion.p>
             
-            {/* 🚨 NEW: HERO CTA BUTTONS 🚨 */}
+            {/* HERO CTA BUTTONS */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -332,13 +354,189 @@ const acceptCookies = () => {
         </section>
 
         {/* --- ABOUT SECTION --- */}
-        <section id="about" className="max-w-2xl mx-auto px-6 text-center mb-32 md:mb-48">
+        <section id="about" className="max-w-2xl mx-auto px-6 text-center mb-32 md:mb-40">
           <h1 className="text-3xl md:text-5xl mb-8 font-light text-stone-800 leading-tight">{dict.home.greeting}</h1>
           <div className="text-stone-600 leading-relaxed font-light text-sm md:text-base space-y-4">
             <p>{dict.home.aboutP1}</p>
             <p>{dict.home.aboutP2}</p>
           </div>
         </section>
+
+        {/* --- DIGITAL IMPACT, EDITING & STRATEGY SECTION --- */}
+        <motion.section 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+          className="max-w-7xl mx-auto px-6 mb-32 md:mb-48 border-y border-stone-300 py-24 md:py-32"
+        >
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">
+              Beyond Traditional Production
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light text-stone-800 mb-6 leading-tight">
+              Editing, Viral Workflows & Digital Ecosystems
+            </h2>
+            <p className="text-sm md:text-base text-stone-600 font-light leading-relaxed">
+              Great visuals are only half the equation. I combine cinema-grade production and high-retention editing with data-driven digital strategy building platforms, ad funnels, and viral content systems that turn views into measurable growth.
+            </p>
+          </div>
+
+          {/* 1. KEY METRICS BAR */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 border-b border-stone-300 pb-16 text-center">
+            <div>
+              <span className="text-4xl md:text-6xl font-light text-stone-800 block mb-2">1M+</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-500">Organic Views on Single Reel/Short</span>
+            </div>
+            <div>
+              <span className="text-4xl md:text-6xl font-light text-stone-800 block mb-2">360°</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-500">Meta & Google Ads Funnels</span>
+            </div>
+            <div>
+              <span className="text-4xl md:text-6xl font-light text-stone-800 block mb-2">SaaS</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-500">Founder of ELEVI Streaming Platform</span>
+            </div>
+            <div>
+              <span className="text-4xl md:text-6xl font-light text-stone-800 block mb-2">B2B</span>
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-500">NGO & Travel Brand Workflows</span>
+            </div>
+          </div>
+
+          {/* 2. 1M+ VIRAL SHORT & 4 PILLARS OF DIGITAL STRATEGY */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
+            
+            {/* Left Column: 1M+ Views YouTube Short (oZDwY7HKc24) */}
+            <div className="lg:col-span-5 flex flex-col items-center">
+              <div className="w-full max-w-[340px] aspect-[9/16] bg-stone-900 relative overflow-hidden shadow-xl">
+                <iframe 
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/oZDwY7HKc24?rel=0" 
+                  title="1M+ Views Viral Edit"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 mt-4 text-center">
+                High-Retention Editing • 1,000,000+ Views on YouTube
+              </p>
+            </div>
+
+            {/* Right Column: The 4 Pillars of Your Digital Expertise */}
+            <div className="lg:col-span-7 space-y-10 text-left">
+              
+              <div className="border-l-2 border-stone-800 pl-6">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 block mb-1">01 / Post-Production & Pacing</span>
+                <h3 className="text-2xl font-light text-stone-800 mb-2">High-Retention Video Editing</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
+                  Crafting narrative arcs, sound design, and visual hooks engineered for modern algorithms. My edits have organically surpassed 1 million views on YouTube, turning raw footage into high-performing digital assets.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-stone-800 pl-6">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 block mb-1">02 / Web & Platform Architecture</span>
+                <h3 className="text-2xl font-light text-stone-800 mb-2">Creator of ELEVI Streaming & Custom Web</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed mb-3">
+                  I don&apos;t just create content; I build the platforms that host it. I architected and launched <strong>ELEVI</strong>, a dedicated film streaming platform and app ecosystem, alongside custom, SEO-optimized web architectures for brands.
+                </p>
+                <a href="https://www.elevi.film" target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-800 border-b border-stone-800 pb-0.5 hover:text-stone-500 transition-colors">
+                  Explore ELEVI Platform &rarr;
+                </a>
+              </div>
+
+              <div className="border-l-2 border-stone-800 pl-6">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 block mb-1">03 / Viral Workflows for Travel & NGOs</span>
+                <h3 className="text-2xl font-light text-stone-800 mb-2">Content Systems & Brand Awareness</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
+                  Partnering with travel companies and NGOs to design repeatable content workflows. From concept to final cut, I help organizations scale their organic reach, amplify their mission, and build engaged communities.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-stone-800 pl-6">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 block mb-1">04 / Paid Acquisition & Tracking</span>
+                <h3 className="text-2xl font-light text-stone-800 mb-2">Meta & Google Ads Infrastructure</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
+                  Bridging creative production with performance marketing. I deploy full-funnel ad campaigns across Meta and Google, complete with custom pixel tracking, conversion APIs, and analytics to ensure every piece of content drives ROI.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 3. FEATURED FILM PRODUCTIONS & DOCUMENTARY EDITING (3 Horizontal Films) */}
+          <div className="border-t border-stone-300 pt-20">
+            <div className="text-center mb-16">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-3 block">
+                Cinema & Impact Storytelling
+              </span>
+              <h3 className="text-2xl md:text-4xl font-light text-stone-800">
+                Selected Film Productions & Documentary Edits
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              
+              {/* Film 1: Produced Film Trailer */}
+              <div className="flex flex-col">
+                <div className="w-full aspect-video bg-stone-900 relative overflow-hidden shadow-md mb-5">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/z350gRuA81M?rel=0" 
+                    title="Official Film Trailer"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-1">
+                  Producer • Photographer
+                </span>
+                <h4 className="text-xl font-light text-stone-800 mb-2">Ephemeral</h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed">
+                  An ice climbing documentary featuring Jeff Mercier and Will Gadd. A film in collaboration with Rab, LaSportiva, HDry, and Icelandic Mountain Guides. 
+                </p>
+              </div>
+
+              {/* Film 2: NGO Paws Patrol LV */}
+              <div className="flex flex-col">
+                <div className="w-full aspect-video bg-stone-900 relative overflow-hidden shadow-md mb-5">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/FfcdoiBjtQI?rel=0" 
+                    title="Paws Patrol LV NGO Documentary"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-1">
+                  Producer • Director • Editor
+                </span>
+                <h4 className="text-xl font-light text-stone-800 mb-2">DUMPED (NGO Impact)</h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed">
+                  A raw story about the real life behind animal rescue team Paws Patrol LV in Las Vegas. Winner of best short documentary 2026 - Rock The Shorts
+                </p>
+              </div>
+
+              {/* Film 3: Producer, Filmmaker & Editor */}
+              <div className="flex flex-col">
+                <div className="w-full aspect-video bg-stone-900 relative overflow-hidden shadow-md mb-5">
+                  <iframe 
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/1rB4CqfJLKE?rel=0" 
+                    title="Documentary Production & Edit"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-1">
+                  Producer • Filmmaker • Editor
+                </span>
+                <h4 className="text-xl font-light text-stone-800 mb-2">Tipa Tipa</h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed">
+                  A film following one of the most famous trail runners in the world, Sylvaine Cussot, Tipa Tipa is an emotional story about the Reunion Island ultramarathon: La Diagonale des Fous.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </motion.section>
 
         {/* --- PORTFOLIO PREVIEW --- */}
         <section id="portfolio" className="max-w-7xl mx-auto px-6 mb-32 md:mb-48">
@@ -347,7 +545,7 @@ const acceptCookies = () => {
             <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold">{dict.portfolio.subtitle}</p>
           </div>
           
-          {/* 🚨 MOVED: 3rd Vertical Picture for Weddings (Now centered on top) */}
+          {/* 3rd Vertical Picture for Weddings (Centered on top) */}
           <div className="flex justify-center mb-16 md:mb-24">
             <Link href="/portfolio" className="group cursor-pointer block w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-center">
               <div className="relative aspect-[3/4] bg-stone-300 mb-6 overflow-hidden transition-transform duration-700 group-hover:scale-[1.02] shadow-sm">
@@ -402,7 +600,7 @@ const acceptCookies = () => {
               </p>
             </div>
           </div>
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* --- ROW 1 --- */}
             <div className="w-full aspect-[4/5] bg-stone-300 relative overflow-hidden shadow-sm">
                <Image src="/dolomites.jpeg" alt="Dolomites Landscape" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
@@ -429,42 +627,53 @@ const acceptCookies = () => {
           </div>
         </section>
 
-        {/* --- 2026 EDITORIAL RATE BANNER --- */}
+        {/* --- 3000 MILES FEATURE FILM BANNER WITH VERTICAL POSTER --- */}
         <motion.section 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
           className="max-w-5xl mx-auto px-6 mb-32 md:mb-48"
         >
-          <div className="bg-stone-800 text-[#E9E8E6] p-12 md:p-20 text-center shadow-lg relative overflow-hidden">
+          <div className="bg-stone-800 text-[#E9E8E6] p-8 md:p-16 shadow-lg relative overflow-hidden grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
             {/* Subtle background accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-stone-500 via-stone-300 to-stone-500 opacity-20"></div>
             
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-6 block">{dict.promo.eyebrow}</span>
-            <h2 className="text-3xl md:text-4xl font-light mb-6">{dict.promo.bannerTitle}</h2>
-            
-            <p className="text-sm md:text-base text-stone-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-              {dict.promo.bannerDesc1} <strong className="text-white font-medium">{dict.promo.bannerDiscount}</strong> {dict.promo.bannerDesc2}
-              <br /><br />
-              {dict.promo.bannerDesc3} <strong className="text-white font-medium">{dict.promo.bannerDate}</strong>.
-            </p>
-            
-            <div className="flex flex-wrap justify-center items-center gap-6 mt-10">
-              <a 
-                href="mailto:fvalentinuzzi@studio3cime.com?subject=2026%20Editorial%20Rate%20Inquiry" 
-                onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: 'email' })}
-                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
-              >
-                {dict.promo.emailBtn}
-              </a>
-              <span className="text-stone-600 font-light">/</span>
-              <a 
-                href="https://wa.me/393515034609?text=Ciao%20Francesco!%20I%20would%20love%20to%20claim%20the%2050%25%20Editorial%20Portfolio%20Rate." 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E9E8E6] hover:text-stone-300 transition-colors border-b-2 border-[#E9E8E6] hover:border-stone-300 pb-1"
-              >
-                {dict.promo.whatsappBtn}
-              </a>
+            {/* 🚨 BANNER VERTICAL POSTER (Left Column on Desktop) */}
+            <div className="md:col-span-5 flex justify-center">
+              <div className="w-64 sm:w-72 md:w-full aspect-[2/3] bg-stone-900 relative overflow-hidden shadow-2xl border border-stone-700">
+                <Image 
+                  src="/3000-miles-official-poster.jpeg" 
+                  alt="3000 Miles Official Film Poster" 
+                  fill 
+                  className="object-cover hover:scale-[1.02] transition-transform duration-700" 
+                />
+              </div>
             </div>
+
+            {/* Banner Text & CTA (Right Column on Desktop) */}
+            <div className="md:col-span-7 text-center md:text-left">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">
+                New Film Production • Studio 3 Cime
+              </span>
+              <h2 className="text-3xl md:text-5xl font-light mb-6 tracking-wide">
+                3000 Miles
+              </h2>
+              
+              <p className="text-sm md:text-base text-stone-300 font-light leading-relaxed mb-10">
+                The extraordinary, emotional true story of <strong className="text-white font-medium">Jason &amp; Nikki Doyle</strong> running across the United States on foot. An inspirational, unfiltered journey to find purpose and defy every physical and mental challenge along the way.
+              </p>
+              
+              <div className="flex flex-wrap justify-center md:justify-start items-center gap-6">
+                <a 
+                  href="https://www.studio3cime.com/3000-miles" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'generate_lead', { lead_type: '3000_miles_waitlist' })}
+                  className="px-10 py-4 bg-[#E9E8E6] text-stone-900 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-300 transition-colors"
+                >
+                  Join the Waitlist
+                </a>
+              </div>
+            </div>
+
           </div>
         </motion.section>
 
